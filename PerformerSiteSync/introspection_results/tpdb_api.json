@@ -1,0 +1,5049 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ThePornDB",
+    "description": "API documentation for the ThePornDB API",
+    "contact": {
+      "name": "ThePornDB",
+      "url": "https://api.theporndb.net"
+    },
+    "version": "v3.24.433"
+  },
+  "paths": {
+    "/scenes": {
+      "get": {
+        "tags": [
+          "Scenes"
+        ],
+        "summary": "List/Search Scenes",
+        "operationId": "searchScenes",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestCategoryId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDate"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDateOperation"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDirectorAnd"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDirectorId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDirectors"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDuration"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestExternalId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestHash"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestHashType"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestIsCollected"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestIsFavourite"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestOrderBy"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestParse"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerPage"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerAnd"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerGenderAnd"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerGenderOnly"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerGenders"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformers"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestQ"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestSite"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestSiteId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestSiteOperation"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestSku"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestTagAnd"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestTags"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestTitle"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestUrl"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestYear"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List/Search Scenes",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Scenes"
+        ],
+        "summary": "Create Scenes",
+        "description": "Create a Scene",
+        "operationId": "createScene",
+        "requestBody": {
+          "description": "Create Scene",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SceneDataObject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Create Scene",
+                  "properties": {
+
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jav": {
+      "get": {
+        "tags": [
+          "Jav"
+        ],
+        "summary": "List/Search Jav",
+        "operationId": "searchJav",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestCategoryId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDate"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDateOperation"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDirectorAnd"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDirectorId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDirectors"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDuration"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestExternalId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestHash"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestHashType"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestIsCollected"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestIsFavourite"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestOrderBy"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestParse"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerPage"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerAnd"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerGenderAnd"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerGenderOnly"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerGenders"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformers"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestQ"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestSite"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestSiteId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestSiteOperation"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestSku"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestTagAnd"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestTags"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestTitle"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestUrl"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestYear"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List/Search Jav",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Jav"
+        ],
+        "summary": "Create Jav",
+        "operationId": "createJav",
+        "requestBody": {
+          "description": "Create Jav",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SceneDataObject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Create Jav",
+                  "properties": {
+
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/movies": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "List/Search Movies",
+        "operationId": "searchMovies",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestCategoryId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDate"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDateOperation"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDirectorAnd"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDirectorId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDirectors"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestDuration"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestExternalId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestHash"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestHashType"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestIsCollected"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestIsFavourite"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestOrderBy"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestParse"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerPage"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerAnd"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerGenderAnd"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerGenderOnly"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerGenders"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformerId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestPerformers"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestQ"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestSite"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestSiteId"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestSiteOperation"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestSku"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestTagAnd"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestTags"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestTitle"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestUrl"
+          },
+          {
+            "$ref": "#/components/parameters/SceneSearchRequestYear"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List/Search Movies",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "Create Movies",
+        "operationId": "createMovie",
+        "requestBody": {
+          "description": "Create Movie",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SceneDataObject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Create Movie",
+                  "properties": {
+
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/performers/{identifier}/scenes": {
+      "get": {
+        "tags": [
+          "Scenes"
+        ],
+        "summary": "Get Performer Scenes",
+        "operationId": "getPerformerScenes",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/per_page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List Performer Scenes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List Performer Scenes",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/performers/{identifier}/jav": {
+      "get": {
+        "tags": [
+          "Jav"
+        ],
+        "summary": "Get Performer Jav",
+        "operationId": "getPerformerJav",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/per_page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List Performer Jav",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List Performer Jav",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/performers/{identifier}/movies": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "Get Performer Movies",
+        "operationId": "getPerformerMovies",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/per_page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List Performer Movies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List Performer Movies",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scenes/{identifier}": {
+      "get": {
+        "tags": [
+          "Scenes"
+        ],
+        "summary": "Get Scene",
+        "operationId": "getScene",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          },
+          {
+            "name": "add_to_collection",
+            "in": "query",
+            "description": "Add to collection",
+            "schema": {
+              "description": "Add to collection",
+              "type": "boolean",
+              "example": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Get Scene",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/SceneResource"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/jav/{identifier}": {
+      "get": {
+        "tags": [
+          "Jav"
+        ],
+        "summary": "Get Jav",
+        "operationId": "getJav",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          },
+          {
+            "name": "add_to_collection",
+            "in": "query",
+            "description": "Add to collection",
+            "schema": {
+              "description": "Add to collection",
+              "type": "boolean",
+              "example": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Get Jav",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/SceneResource"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/movies/{identifier}": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "Get Movie",
+        "operationId": "getMovie",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          },
+          {
+            "name": "add_to_collection",
+            "in": "query",
+            "description": "Add to collection",
+            "schema": {
+              "description": "Add to collection",
+              "type": "boolean",
+              "example": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Get Movie",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/SceneResource"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/scenes/hash/{hash}": {
+      "get": {
+        "tags": [
+          "Scenes"
+        ],
+        "summary": "Find Scene By Hash",
+        "description": "Find scene by hash",
+        "operationId": "findSceneHash",
+        "parameters": [
+          {
+            "name": "hash",
+            "in": "path",
+            "description": "Hash",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Hash Type",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/SceneHashEnum"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Get Scene",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/SceneResource"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/jav/hash/{hash}": {
+      "get": {
+        "tags": [
+          "Jav"
+        ],
+        "summary": "Find Jav By Hash",
+        "operationId": "findJavHash",
+        "parameters": [
+          {
+            "name": "hash",
+            "in": "path",
+            "description": "Hash",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Hash Type",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/SceneHashEnum"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Get Jav",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/SceneResource"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/movies/hash/{hash}": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "Find Movie By Hash",
+        "operationId": "findMovieHash",
+        "parameters": [
+          {
+            "name": "hash",
+            "in": "path",
+            "description": "Hash",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Hash Type",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/SceneHashEnum"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Get Movie",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/SceneResource"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/scenes/{identifier}/similar": {
+      "get": {
+        "tags": [
+          "Scenes"
+        ],
+        "summary": "Get similar Scenes",
+        "operationId": "getScenesSimilar",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List/Search Scenes",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/jav/{identifier}/similar": {
+      "get": {
+        "tags": [
+          "Jav"
+        ],
+        "summary": "Get similar Jav",
+        "operationId": "getJavSimilar",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List/Search Jav",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/movies/{identifier}/similar": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "Get similar Movies",
+        "operationId": "getMoviesSimilar",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List/Search Movies",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/scenes/similar": {
+      "get": {
+        "tags": [
+          "Scenes"
+        ],
+        "summary": "Get similar Scenes by multiple ids",
+        "operationId": "getScenesSimilarByIDs",
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1,2,3,4"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List/Search Scenes",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/jav/similar": {
+      "get": {
+        "tags": [
+          "Jav"
+        ],
+        "summary": "Get similar Jav by multiple ids",
+        "operationId": "getJavSimilarByIDs",
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1,2,3,4"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List/Search Jav",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/movies/similar": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "Get similar Movies by multiple ids",
+        "operationId": "getMoviesSimilarByIDs",
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1,2,3,4"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List/Search Movies",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/sites/{identifier}/scenes": {
+      "get": {
+        "tags": [
+          "Scenes"
+        ],
+        "summary": "Get Site Scenes",
+        "operationId": "getSiteScenes",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/per_page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List Site Scenes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List Site Scenes",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sites/{identifier}/jav": {
+      "get": {
+        "tags": [
+          "Jav"
+        ],
+        "summary": "Get Site Jav",
+        "operationId": "getSiteJav",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/per_page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List Site Jav",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List Site Jav",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sites/{identifier}/movies": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "Get Site Movies",
+        "operationId": "getSiteMovies",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/per_page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List Site Movies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List Site Movies",
+                  "properties": {
+                    "data": {
+                      "description": "An array of SceneResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SceneResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scenes/{identifier}/hash": {
+      "post": {
+        "tags": [
+          "Scenes"
+        ],
+        "summary": "Create Scenes Hash",
+        "description": "Add/Vote for Hash",
+        "operationId": "createSceneHash",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          }
+        ],
+        "requestBody": {
+          "description": "Create Scene Hash",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Create Scene Hash",
+                "properties": {
+                  "hash": {
+                    "description": "Hash",
+                    "type": "string",
+                    "example": "d7dae9cd888c5984"
+                  },
+                  "type": {
+                    "$ref": "#/components/schemas/SceneHashEnum"
+                  },
+                  "duration": {
+                    "type": "integer",
+                    "example": 1878
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Create Hash for Scene",
+                  "properties": {
+
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jav/{identifier}/hash": {
+      "post": {
+        "tags": [
+          "Jav"
+        ],
+        "summary": "Create Jav Hash",
+        "operationId": "createJavHash",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          }
+        ],
+        "requestBody": {
+          "description": "Create Jav Hash",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Create Jav Hash",
+                "properties": {
+                  "hash": {
+                    "description": "Hash",
+                    "type": "string",
+                    "example": "d7dae9cd888c5984"
+                  },
+                  "type": {
+                    "$ref": "#/components/schemas/SceneHashEnum"
+                  },
+                  "duration": {
+                    "type": "integer",
+                    "example": 1878
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Create Hash for Jav",
+                  "properties": {
+
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/movies/{identifier}/hash": {
+      "post": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "Create Movies Hash",
+        "operationId": "createMovieHash",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          }
+        ],
+        "requestBody": {
+          "description": "Create Movie Hash",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Create Movie Hash",
+                "properties": {
+                  "hash": {
+                    "description": "Hash",
+                    "type": "string",
+                    "example": "d7dae9cd888c5984"
+                  },
+                  "type": {
+                    "$ref": "#/components/schemas/SceneHashEnum"
+                  },
+                  "duration": {
+                    "type": "integer",
+                    "example": 1878
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Create Hash for Movie",
+                  "properties": {
+
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bulk/scene": {
+      "post": {
+        "tags": [
+          "Bulk"
+        ],
+        "summary": "Bulk update scene dates and hashes",
+        "description": "Bulk Upsert Scenes",
+        "operationId": "bulkUpdateScenes",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "scene_id": {
+                          "type": "integer"
+                        },
+                        "date": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "hashes": {
+                          "type": "array",
+                          "items": {
+                            "properties": {
+                              "hash": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "OSHASH",
+                                  "PHASH"
+                                ]
+                              },
+                              "duration": {
+                                "type": "integer",
+                                "nullable": true
+                              }
+                            },
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "type": "object"
+                    }
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/changes/{type}": {
+      "get": {
+        "tags": [
+          "Changes"
+        ],
+        "summary": "Returns changes for an entity",
+        "operationId": "e17e1cbab46bd5f9256203b1283a4e6f",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "The type of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "movies",
+                "scenes",
+                "jav",
+                "performers"
+              ]
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "The date to start from",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-01-01T21:01:42+00:00"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/per_page"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns changes for an entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "An array of ChangesResource",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ChangesResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/directors": {
+      "get": {
+        "tags": [
+          "Directors"
+        ],
+        "summary": "List/Search Directors",
+        "operationId": "listDirectors",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Items per page",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List/Search Directors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "An array of DirectorResource",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/DirectorResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favourites": {
+      "get": {
+        "tags": [
+          "Favorites"
+        ],
+        "summary": "List/Show Favorites",
+        "operationId": "listFavorites",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "The type of entity",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "site",
+                "performer"
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "description": "The id of entity",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List/Show Favorites",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "An array of ids",
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Favorites"
+        ],
+        "summary": "Show's whether a resource is a favourite",
+        "operationId": "toggleFavorites",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "The type of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "site",
+                "performer"
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "description": "The id of entity",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns whether a resource is a favourite",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "value": {
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hashes": {
+      "delete": {
+        "tags": [
+          "Hashes"
+        ],
+        "summary": "Delete hashes by id",
+        "operationId": "deleteHashes",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "query",
+            "description": "The id of hash",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete a hashes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "value": {
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/leaderboard": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get User Leaderboard",
+        "operationId": "640f24e347f94aa2c1088f662c13a704",
+        "responses": {
+          "200": {
+            "description": "User Leaderboard",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "User Leaderboard",
+                  "properties": {
+                    "idx": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "user_name": {
+                      "type": "string"
+                    },
+                    "hash_count": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/performer-sites": {
+      "get": {
+        "tags": [
+          "PerformerSites"
+        ],
+        "summary": "List/Search PerformerSites",
+        "operationId": "listPerformerSites",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PerformerSiteSearchRequestQ"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSiteSearchRequestOrderBy"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSiteSearchRequestLetter"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSiteSearchRequestParent"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSiteSearchRequestParentId"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSiteSearchRequestParentOperation"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSiteSearchRequestSite"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSiteSearchRequestSiteId"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSiteSearchRequestPerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List/Search PerformerSites",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List/Search PerformerSites",
+                  "properties": {
+                    "data": {
+                      "description": "An array of PerformerSiteResource",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PerformerSiteResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/performer-sites/{identifier}": {
+      "get": {
+        "tags": [
+          "PerformerSites"
+        ],
+        "summary": "Get PerformerSite",
+        "operationId": "getPerformerSite",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Get PerformerSite",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/PerformerSiteResource"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/performers": {
+      "get": {
+        "tags": [
+          "Performers"
+        ],
+        "summary": "List/Search Performers",
+        "operationId": "listPerformers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestQ"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestOrderBy"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestAge"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestAgeOperation"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestAgeOperation"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestBand"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestBandOperation"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestBirthplaceCode"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestCup"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestEthnicity"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestEyeColour"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestFakeBoobs"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestGender"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestHairColour"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestHeight"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestHeightOperation"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestHip"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestHipOperation"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestLetter"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestSameSexOnly"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestWaist"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestWaistOperation"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestWeight"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestWeightOperation"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/PerformerSearchRequestPerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List/Search Performers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "List/Search Performers",
+                  "properties": {
+                    "data": {
+                      "description": "An array of PerformerResources",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PerformerResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/performers/{identifier}": {
+      "get": {
+        "tags": [
+          "Performers"
+        ],
+        "summary": "Get Performer",
+        "operationId": "getPerformer",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Get Performer",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/PerformerResource"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/performers/{identifier}/similar": {
+      "get": {
+        "tags": [
+          "Performers"
+        ],
+        "summary": "Get Similar Performers",
+        "operationId": "getPerformerSimilar",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Get Performer",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/PerformerResource"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/performers/similar": {
+      "get": {
+        "tags": [
+          "Performers"
+        ],
+        "summary": "Get Similar Performers by IDs",
+        "operationId": "getPerformerSimilarByIDs",
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1,2,3,4"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Get Performer",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/PerformerResource"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/ratings": {
+      "get": {
+        "tags": [
+          "Ratings"
+        ],
+        "summary": "Get Rating",
+        "operationId": "getRating",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "ID of the model",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Type of the model",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "scene",
+                "site",
+                "performer"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Rating",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Get Rating",
+                  "properties": {
+                    "rating": {
+                      "description": "Rating",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Ratings"
+        ],
+        "summary": "Add Rating",
+        "operationId": "addRating",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "ID of the model",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Type of the model",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "scene",
+                "site",
+                "performer"
+              ]
+            }
+          },
+          {
+            "name": "rating",
+            "in": "query",
+            "description": "Rating",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "maximum": 5,
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Add Rating",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Add Rating",
+                  "properties": {
+                    "rating": {
+                      "description": "Rating",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sites": {
+      "get": {
+        "tags": [
+          "Sites"
+        ],
+        "summary": "List/Search Sites",
+        "operationId": "listSites",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SiteSearchRequestQ"
+          },
+          {
+            "$ref": "#/components/parameters/SiteSearchRequestLetter"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/SiteSearchRequestPerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List/Search Sites",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "An array of SitesResource",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SiteResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sites/{identifier}": {
+      "get": {
+        "tags": [
+          "Sites"
+        ],
+        "summary": "Show Site",
+        "operationId": "ff8a9eed4050230f99e50e9fd7830a00",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Show Site",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/SiteResource"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/tags": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "List/Search Tags",
+        "operationId": "listTags",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc_name",
+                "desc_name",
+                "most_relevant",
+                "recently_created",
+                "recently_updated",
+                "reverse_created",
+                "reverse_updated"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List/Search Tags",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "An array of TagsResource",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/TagResource"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/collection": {
+      "post": {
+        "tags": [
+          "Collection"
+        ],
+        "summary": "Toggle a media item in the user's collection",
+        "operationId": "toggleCollection",
+        "parameters": [
+          {
+            "name": "scene_id",
+            "in": "query",
+            "description": "The ID of the scene",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "The type of the scene",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/SceneTypeEnum"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Toggle a media item in the user's collection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "value": {
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/user": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Your User",
+        "operationId": "me",
+        "responses": {
+          "200": {
+            "description": "Your User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResource"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ChildSceneDataObject": {
+        "properties": {
+          "external_id": {
+            "type": "string"
+          },
+          "site": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "MarkerDataObject": {
+        "properties": {
+          "end": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string"
+          },
+          "start": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "PerformerDataObject": {
+        "properties": {
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "bio": {
+            "type": "string"
+          },
+          "extra": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "image_blob": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "site": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "PerformerExtraDataObject": {
+        "properties": {
+          "astrology": {
+            "type": "string"
+          },
+          "birthday": {
+            "type": "string"
+          },
+          "birthplace": {
+            "type": "string"
+          },
+          "cupsize": {
+            "type": "string"
+          },
+          "ethnicity": {
+            "type": "string"
+          },
+          "eye_colour": {
+            "type": "string"
+          },
+          "fakeboobs": {
+            "type": "boolean"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "haircolor": {
+            "type": "string"
+          },
+          "height": {
+            "type": "string"
+          },
+          "measurements": {
+            "type": "string"
+          },
+          "nationality": {
+            "type": "string"
+          },
+          "piercings": {
+            "type": "string"
+          },
+          "tattoos": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "PerformerSearchRequest": {
+
+      },
+      "PerformerSiteSearchRequest": {
+
+      },
+      "SceneDataObject": {
+        "properties": {
+          "back": {
+            "description": "URL of Back Image",
+            "type": "string",
+            "nullable": true
+          },
+          "back_blob": {
+            "description": "Base64 encoded Back Image",
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "description": "Date of the scene",
+            "type": "string",
+            "example": "2022-01-01",
+            "nullable": true
+          },
+          "description": {
+            "description": "Description of the scene",
+            "type": "string",
+            "nullable": true
+          },
+          "directors": {
+            "description": "List of director names",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "duration": {
+            "description": "Duration of the scene in seconds",
+            "type": "integer",
+            "example": 3600,
+            "nullable": true
+          },
+          "external_id": {
+            "description": "External ID of the scene",
+            "type": "string",
+            "example": "12345"
+          },
+          "force_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "force_update": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "format": {
+            "type": "string",
+            "nullable": true
+          },
+          "hashes_data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpsertHashObject"
+            }
+          },
+          "image": {
+            "description": "URL of Front Image",
+            "type": "string",
+            "nullable": true
+          },
+          "image_blob": {
+            "description": "Base64 encoded Front Image",
+            "type": "string",
+            "nullable": true
+          },
+          "markers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MarkerDataObject"
+            }
+          },
+          "movies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChildSceneDataObject"
+            }
+          },
+          "network": {
+            "description": "The network this site belongs to",
+            "type": "string",
+            "nullable": true
+          },
+          "parent": {
+            "description": "The website this site is on",
+            "type": "string",
+            "nullable": true
+          },
+          "performers": {
+            "description": "List of performer names",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "performers_data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PerformerDataObject"
+            }
+          },
+          "poster": {
+            "description": "URL of Poster Image",
+            "type": "string",
+            "nullable": true
+          },
+          "poster_blob": {
+            "description": "Base64 encoded Poster Image",
+            "type": "string",
+            "nullable": true
+          },
+          "scenes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChildSceneDataObject"
+            }
+          },
+          "site": {
+            "description": "The site this scene is on",
+            "type": "string"
+          },
+          "sku": {
+            "description": "SKU of the scene",
+            "type": "string",
+            "example": "SKU12345",
+            "nullable": true
+          },
+          "store": {
+            "description": "The store this movie is on",
+            "type": "string",
+            "example": "AdultDVDEmpire",
+            "nullable": true
+          },
+          "tags": {
+            "description": "List of tag names",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Anal",
+              "Sex"
+            ],
+            "nullable": true
+          },
+          "title": {
+            "description": "The title of the scene",
+            "type": "string",
+            "example": "Big Booty Bitches Vol 4"
+          },
+          "trailer": {
+            "description": "The URL to the scene trailer",
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/SceneTypeEnum"
+          },
+          "url": {
+            "description": "The URL the scene was scraped from",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "SceneSearchRequest": {
+
+      },
+      "SiteSearchRequest": {
+
+      },
+      "SuggestedChangesSearchRequest": {
+
+      },
+      "TagSearchRequest": {
+
+      },
+      "UpsertHashObject": {
+        "properties": {
+          "duration": {
+            "type": "integer",
+            "nullable": true
+          },
+          "hash": {
+            "type": "string"
+          },
+          "scene_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/SceneHashEnum"
+          },
+          "user_id": {
+            "type": "integer",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "PerformerAstrologyEnum": {
+        "type": "string",
+        "enum": [
+          "AQUARIUS",
+          "ARIES",
+          "CANCER",
+          "CAPRICORN",
+          "GEMINI",
+          "LEO",
+          "LIBRA",
+          "PISCES",
+          "SAGITTARIUS",
+          "SCORPIO",
+          "TAURUS",
+          "VIRGO"
+        ]
+      },
+      "PerformerBirthplaceCodeEnum": {
+        "type": "string",
+        "enum": [
+          "Afghanistan",
+          "Aland_Islands",
+          "Albania",
+          "Algeria",
+          "American_Samoa",
+          "Andorra",
+          "Angola",
+          "Anguilla",
+          "Antarctica",
+          "Antigua_and_Barbuda",
+          "Argentina",
+          "Armenia",
+          "Aruba",
+          "Australia",
+          "Austria",
+          "Azerbaijan",
+          "Bahamas",
+          "Bahrain",
+          "Bangladesh",
+          "Barbados",
+          "Belarus",
+          "Belgium",
+          "Belize",
+          "Benin",
+          "Bermuda",
+          "Bhutan",
+          "Bolivia",
+          "Bonaire_Sint_Eustatius_and_Saba",
+          "Bosnia_and_Herzegovina",
+          "Botswana",
+          "Bouvet_Island",
+          "Brazil",
+          "British_Indian_Ocean_Territory",
+          "Brunei_Darussalam",
+          "Bulgaria",
+          "Burkina_Faso",
+          "Burundi",
+          "Cabo_Verde",
+          "Cambodia",
+          "Cameroon",
+          "Canada",
+          "Cayman_Islands",
+          "Central_African_Republic",
+          "Chad",
+          "Chile",
+          "China",
+          "Christmas_Island",
+          "Cocos_Islands",
+          "Colombia",
+          "Comoros",
+          "Congo",
+          "Congo_Democratic_Republic",
+          "Cook_Islands",
+          "Costa_Rica",
+          "Cote_d_Ivoire",
+          "Croatia",
+          "Cuba",
+          "Curacao",
+          "Cyprus",
+          "Czechia",
+          "Denmark",
+          "Djibouti",
+          "Dominica",
+          "Dominican_Republic",
+          "Ecuador",
+          "Egypt",
+          "El_Salvador",
+          "Equatorial_Guinea",
+          "Eritrea",
+          "Estonia",
+          "Eswatini",
+          "Ethiopia",
+          "Falkland_Islands",
+          "Faroe_Islands",
+          "Fiji",
+          "Finland",
+          "France",
+          "French_Guiana",
+          "French_Polynesia",
+          "French_Southern_Territories",
+          "Gabon",
+          "Gambia",
+          "Georgia",
+          "Germany",
+          "Ghana",
+          "Gibraltar",
+          "Greece",
+          "Greenland",
+          "Grenada",
+          "Guadeloupe",
+          "Guam",
+          "Guatemala",
+          "Guernsey",
+          "Guinea",
+          "Guinea_Bissau",
+          "Guyana",
+          "Haiti",
+          "Heard_Island_and_McDonald_Islands",
+          "Holy_See",
+          "Honduras",
+          "Hong_Kong",
+          "Hungary",
+          "Iceland",
+          "India",
+          "Indonesia",
+          "Iran",
+          "Iraq",
+          "Ireland",
+          "Isle_of_Man",
+          "Israel",
+          "Italy",
+          "Jamaica",
+          "Japan",
+          "Jersey",
+          "Jordan",
+          "Kazakhstan",
+          "Kenya",
+          "Kiribati",
+          "Korea_Democratic_Peoples_Republic",
+          "Korea_Republic",
+          "Kuwait",
+          "Kyrgyzstan",
+          "Lao_Peoples_Democratic_Republic",
+          "Latvia",
+          "Lebanon",
+          "Lesotho",
+          "Liberia",
+          "Libya",
+          "Liechtenstein",
+          "Lithuania",
+          "Luxembourg",
+          "Macao",
+          "Madagascar",
+          "Malawi",
+          "Malaysia",
+          "Maldives",
+          "Mali",
+          "Malta",
+          "Marshall_Islands",
+          "Martinique",
+          "Mauritania",
+          "Mauritius",
+          "Mayotte",
+          "Mexico",
+          "Micronesia",
+          "Moldova",
+          "Monaco",
+          "Mongolia",
+          "Montenegro",
+          "Montserrat",
+          "Morocco",
+          "Mozambique",
+          "Myanmar",
+          "Namibia",
+          "Nauru",
+          "Nepal",
+          "Netherlands",
+          "New_Caledonia",
+          "New_Zealand",
+          "Nicaragua",
+          "Niger",
+          "Nigeria",
+          "Niue",
+          "Norfolk_Island",
+          "North_Macedonia",
+          "Northern_Mariana_Islands",
+          "Norway",
+          "Oman",
+          "Pakistan",
+          "Palau",
+          "Palestine",
+          "Panama",
+          "Papua_New_Guinea",
+          "Paraguay",
+          "Peru",
+          "Philippines",
+          "Pitcairn",
+          "Poland",
+          "Portugal",
+          "Puerto_Rico",
+          "Qatar",
+          "Reunion",
+          "Romania",
+          "Russian_Federation",
+          "Rwanda",
+          "Saint_Barthelemy",
+          "Saint_Helena_Ascension_Tristan_da_Cunha",
+          "Saint_Kitts_and_Nevis",
+          "Saint_Lucia",
+          "Saint_Martin_French_part",
+          "Saint_Pierre_and_Miquelon",
+          "Saint_Vincent_and_the_Grenadines",
+          "Samoa",
+          "San_Marino",
+          "Sao_Tome_and_Principe",
+          "Saudi_Arabia",
+          "Senegal",
+          "Serbia",
+          "Seychelles",
+          "Sierra_Leone",
+          "Singapore",
+          "Sint_Maarten_Dutch_part",
+          "Slovakia",
+          "Slovenia",
+          "Solomon_Islands",
+          "Somalia",
+          "South_Africa",
+          "South_Georgia_South_Sandwich_Islands",
+          "South_Sudan",
+          "Spain",
+          "Sri_Lanka",
+          "Sudan",
+          "Suriname",
+          "Svalbard_Jan_Mayen",
+          "Sweden",
+          "Switzerland",
+          "Syrian_Arab_Republic",
+          "Taiwan_Province_of_China",
+          "Tajikistan",
+          "Tanzania",
+          "Thailand",
+          "Timor_Leste",
+          "Togo",
+          "Tokelau",
+          "Tonga",
+          "Trinidad_and_Tobago",
+          "Tunisia",
+          "Turkey",
+          "Turkmenistan",
+          "Turks_and_Caicos_Islands",
+          "Tuvalu",
+          "Uganda",
+          "Ukraine",
+          "United_Arab_Emirates",
+          "United_Kingdom",
+          "United_States_of_America",
+          "United_States_Outlying_Islands",
+          "Uruguay",
+          "Uzbekistan",
+          "Vanuatu",
+          "Venezuela",
+          "Viet_Nam",
+          "Virgin_Islands_British",
+          "Virgin_Islands_U_S",
+          "Wallis_and_Futuna",
+          "Western_Sahara",
+          "Yemen",
+          "Zambia",
+          "Zimbabwe"
+        ]
+      },
+      "PerformerEthnicityEnum": {
+        "type": "string",
+        "enum": [
+          "ASIAN",
+          "BLACK",
+          "CAUCASIAN",
+          "INDIAN",
+          "LATIN",
+          "MIDDLE_EASTERN",
+          "MIXED",
+          "OTHER"
+        ]
+      },
+      "PerformerEyeColourEnum": {
+        "type": "string",
+        "enum": [
+          "BLUE",
+          "BROWN",
+          "GREEN",
+          "GREY",
+          "HAZEL",
+          "RED"
+        ]
+      },
+      "PerformerGenderEnum": {
+        "type": "string",
+        "enum": [
+          "FEMALE",
+          "INTERSEX",
+          "MALE",
+          "NON_BINARY",
+          "TRANSGENDER_FEMALE",
+          "TRANSGENDER_MALE",
+          "UNKNOWN"
+        ]
+      },
+      "PerformerHairColourEnum": {
+        "type": "string",
+        "enum": [
+          "AUBURN",
+          "BALD",
+          "BLACK",
+          "BLONDE",
+          "BRUNETTE",
+          "GREY",
+          "OTHER",
+          "RED",
+          "VARIOUS",
+          "WHITE"
+        ]
+      },
+      "PerformerOrderEnum": {
+        "type": "string",
+        "enum": [
+          "ASC_NAME",
+          "DESC_NAME",
+          "MOST_RELEVANT",
+          "RECENTLY_BIRTHED",
+          "RECENTLY_CREATED",
+          "RECENTLY_UPDATED",
+          "REVERSE_BIRTHED",
+          "REVERSE_CREATED",
+          "REVERSE_UPDATED"
+        ]
+      },
+      "PerformerSiteOrderEnum": {
+        "type": "string",
+        "enum": [
+          "ASC_NAME",
+          "DESC_NAME",
+          "MOST_RELEVANT",
+          "RECENTLY_CREATED",
+          "RECENTLY_UPDATED",
+          "REVERSE_CREATED",
+          "REVERSE_UPDATED"
+        ]
+      },
+      "PerformerSiteParentOperationEnum": {
+        "type": "string",
+        "enum": [
+          "DOESNT_HAVE_PARENT",
+          "HAVE_PARENT"
+        ]
+      },
+      "QueryOperationEnum": {
+        "type": "string",
+        "enum": [
+          "direct",
+          "parse"
+        ]
+      },
+      "SceneHashEnum": {
+        "type": "string",
+        "enum": [
+          "OSHASH",
+          "PHASH"
+        ]
+      },
+      "SceneTypeEnum": {
+        "type": "string",
+        "enum": [
+          "JAV",
+          "Movie",
+          "Scene"
+        ]
+      },
+      "SearchOperationEnum": {
+        "type": "string",
+        "enum": [
+          "=",
+          "\u003E",
+          "\u003E=",
+          "\u003C",
+          "\u003C="
+        ]
+      },
+      "SearchOrderEnum": {
+        "type": "string",
+        "enum": [
+          "duration_asc",
+          "duration_desc",
+          "former_created",
+          "former_released",
+          "former_updated",
+          "most_relevant",
+          "recently_created",
+          "recently_released",
+          "recently_updated"
+        ]
+      },
+      "SearchSiteOperationEnum": {
+        "type": "string",
+        "enum": [
+          "Network",
+          "Parent",
+          "Site",
+          "Site/Network",
+          "Site/Parent",
+          "Site/Parent/Network"
+        ]
+      },
+      "SiteOrderEnum": {
+        "type": "string",
+        "enum": [
+          "ASC_NAME",
+          "DESC_NAME",
+          "MOST_RELEVANT",
+          "RECENTLY_CREATED",
+          "RECENTLY_UPDATED",
+          "REVERSE_CREATED",
+          "REVERSE_UPDATED"
+        ]
+      },
+      "SuggestedChangesOrderEnum": {
+        "type": "string",
+        "enum": [
+          "RECENTLY_CREATED",
+          "RECENTLY_UPDATED",
+          "REVERSE_CREATED",
+          "REVERSE_UPDATED"
+        ]
+      },
+      "SuggestedChangesSourceEnum": {
+        "type": "string",
+        "enum": [
+          "stash",
+          "unknown",
+          "web"
+        ]
+      },
+      "SuggestedChangesStatusEnum": {
+        "type": "string",
+        "enum": [
+          "accepted",
+          "pending",
+          "processing",
+          "rejected"
+        ]
+      },
+      "SuggestedChangesTypeEnum": {
+        "type": "string",
+        "enum": [
+          "edit",
+          "merge"
+        ]
+      },
+      "TagOrderEnum": {
+        "type": "string",
+        "enum": [
+          "ASC_NAME",
+          "DESC_NAME",
+          "MOST_RELEVANT",
+          "RECENTLY_CREATED",
+          "RECENTLY_UPDATED",
+          "REVERSE_CREATED",
+          "REVERSE_UPDATED"
+        ]
+      },
+      "ChangesResource": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": "1"
+          },
+          "uuid": {
+            "type": "string",
+            "example": "7d90bc4b-3b8a-45ba-b4cc-7c141d25cd45"
+          }
+        },
+        "type": "object"
+      },
+      "DirectorResource": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": "1"
+          },
+          "uuid": {
+            "type": "string",
+            "example": "d284e2a0-789d-4e6c-beb9-6e61c24e8b84"
+          },
+          "name": {
+            "type": "string",
+            "example": "Test Test"
+          },
+          "slug": {
+            "type": "string",
+            "example": "test-test"
+          }
+        },
+        "type": "object"
+      },
+      "MediaResource": {
+        "description": "A resource that contains information about an image",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 123
+          },
+          "url": {
+            "type": "string",
+            "example": "https://cdn.theporndb.net/my-big-butt.jpg"
+          },
+          "size": {
+            "type": "integer",
+            "example": 1024000
+          },
+          "order": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "type": "object"
+      },
+      "PerformerResource": {
+        "description": "Contains information about a performer",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "32aa4b68-4dbe-49f2-92a5-0e54e5074f4b"
+          },
+          "_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "slug": {
+            "type": "string",
+            "example": "jessica-jaymes"
+          },
+          "name": {
+            "type": "string",
+            "example": "Jessica Jaymes"
+          },
+          "disambiguation": {
+            "type": "string",
+            "example": "2005"
+          },
+          "bio": {
+            "type": "string",
+            "nullable": true
+          },
+          "rating": {
+            "type": "number",
+            "format": "float",
+            "example": 5
+          },
+          "is_parent": {
+            "type": "boolean"
+          },
+          "extras": {
+            "properties": {
+              "gender": {
+                "type": "string",
+                "example": "Male",
+                "nullable": true
+              },
+              "birthday": {
+                "type": "string",
+                "example": "1990-01-01",
+                "nullable": true
+              },
+              "birthday_timestamp": {
+                "type": "number",
+                "format": "float",
+                "nullable": true
+              },
+              "deathday": {
+                "type": "string",
+                "example": "2022-01-01",
+                "nullable": true
+              },
+              "deathday_timestamp": {
+                "type": "number",
+                "format": "float",
+                "nullable": true
+              },
+              "birthplace": {
+                "type": "string",
+                "example": "Florida, USA",
+                "nullable": true
+              },
+              "birthplace_code": {
+                "type": "string",
+                "example": "US",
+                "nullable": true
+              },
+              "astrology": {
+                "type": "string",
+                "example": "Capricorn",
+                "nullable": true
+              },
+              "ethnicity": {
+                "type": "string",
+                "example": "Caucasian",
+                "nullable": true
+              },
+              "nationality": {
+                "type": "string",
+                "example": "American",
+                "nullable": true
+              },
+              "hair_colour": {
+                "type": "string",
+                "example": "Blonde",
+                "nullable": true
+              },
+              "eye_colour": {
+                "type": "string",
+                "example": "Green",
+                "nullable": true
+              },
+              "weight": {
+                "type": "string",
+                "example": "50kg",
+                "nullable": true
+              },
+              "height": {
+                "type": "string",
+                "example": "160cm",
+                "nullable": true
+              },
+              "measurements": {
+                "type": "string",
+                "example": "34C-24-34",
+                "nullable": true
+              },
+              "cupsize": {
+                "type": "string",
+                "example": "34C",
+                "nullable": true
+              },
+              "tattoos": {
+                "type": "string",
+                "example": "Right arm",
+                "nullable": true
+              },
+              "piercings": {
+                "type": "string",
+                "example": "Navel",
+                "nullable": true
+              },
+              "waist": {
+                "type": "string",
+                "example": "24",
+                "nullable": true
+              },
+              "hips": {
+                "type": "string",
+                "example": "34",
+                "nullable": true
+              },
+              "career_start_year": {
+                "type": "integer",
+                "example": "2014",
+                "nullable": true
+              },
+              "career_end_year": {
+                "type": "integer",
+                "example": "2024",
+                "nullable": true
+              },
+              "fake_boobs": {
+                "type": "boolean",
+                "example": true
+              },
+              "same_sex_only": {
+                "type": "boolean",
+                "example": true
+              },
+              "links": {
+                "type": "object",
+                "example": {
+                  "IAFD": null,
+                  "Example": "https://example.com"
+                },
+                "nullable": true,
+                "additionalProperties": {
+                  "type": "string",
+                  "nullable": true
+                }
+              }
+            },
+            "type": "object"
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Jessi Jaymes"
+            ],
+            "nullable": true
+          },
+          "image": {
+            "type": "string",
+            "example": "https://example.com/image.jpg"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "face": {
+            "type": "string"
+          },
+          "posters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MediaResource"
+            },
+            "nullable": true
+          },
+          "site_performers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PerformerSiteResource"
+            },
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "PerformerSiteResource": {
+        "properties": {
+          "id": {
+            "description": "The performer site uuid",
+            "type": "string",
+            "example": "32aa4b68-4dbe-49f2-92a5-0e54e5074f4b"
+          },
+          "_id": {
+            "description": "The performer site id",
+            "type": "integer",
+            "example": 1
+          },
+          "site_id": {
+            "description": "The performer site id",
+            "type": "integer",
+            "example": "1"
+          },
+          "name": {
+            "description": "The performer site name",
+            "type": "string",
+            "example": "Mia Malkova"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "is_parent": {
+            "description": "Whether the performer is a parent entity of another performer",
+            "type": "boolean",
+            "example": true
+          },
+          "extras": {
+            "$ref": "#/components/schemas/PerformerExtraDataObject"
+          },
+          "image": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "face": {
+            "type": "string"
+          },
+          "scenes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SceneResource"
+            }
+          },
+          "parent": {
+            "$ref": "#/components/schemas/PerformerResource"
+          },
+          "site": {
+            "$ref": "#/components/schemas/SiteResource"
+          }
+        },
+        "type": "object"
+      },
+      "MarkerResource": {
+        "description": "Describes a marker start and end time",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "title": {
+            "type": "string",
+            "example": "Anal Sex"
+          },
+          "start_time": {
+            "type": "integer",
+            "example": 120
+          },
+          "end_time": {
+            "type": "integer",
+            "example": "120",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "type": "object"
+      },
+      "SceneResource": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "d284e2a0-789d-4e6c-beb9-6e61c24e8b84"
+          },
+          "_id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string",
+            "example": "Smokin Hot Brunette Silvia Saige Gives in and Finally Fucks Her Patient on Her Office Couch"
+          },
+          "type": {
+            "type": "string",
+            "example": "Scene"
+          },
+          "slug": {
+            "type": "string",
+            "example": "naughty-office-smokin-hot-brunette-silvia-saige-gives-in-and-finally-fucks-her-patient-on-her-office-couch"
+          },
+          "external_id": {
+            "type": "string",
+            "example": "30668"
+          },
+          "description": {
+            "type": "string",
+            "example": "Silvia Saige has been Sam\\'s therapist for a while, and now that he is single again he would like to hook up with her.  Silvia is hesitant since Sam is her patient, but she practically melts in Sam\\'s hands when her tells her how much he wants her tits and ass.  After hearing those magic words Silvia takes a pounding from Sam\\'s dick right there and then."
+          },
+          "rating": {
+            "type": "number",
+            "format": "float",
+            "example": 5
+          },
+          "site_id": {
+            "type": "number",
+            "example": 1
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "example": "2021-11-15"
+          },
+          "url": {
+            "type": "string",
+            "example": "https://naughtyamerica.com/scene/smokin-hot-brunette-silvia-saige-gives-in-and-finally-fucks-her-patient-on-her-office-couch-30668"
+          },
+          "image": {
+            "type": "string",
+            "example": "https://images1.naughtycdn.com/cms/nacmscontent/v1/scenes/no/silviasam/scene/horizontal/1279x719c.jpg"
+          },
+          "back_image": {
+            "type": "string",
+            "example": "https://images1.naughtycdn.com/cms/nacmscontent/v1/scenes/no/silviasam/scene/horizontal/1279x719c.jpg"
+          },
+          "poster_image": {
+            "type": "string",
+            "example": "https://images1.naughtycdn.com/cms/nacmscontent/v1/scenes/no/silviasam/scene/horizontal/1279x719c.jpg"
+          },
+          "poster": {
+            "type": "string",
+            "example": "https://thumb.theporndb.net/office-couch.jpg"
+          },
+          "trailer": {
+            "type": "string",
+            "format": "nullable"
+          },
+          "duration": {
+            "type": "number",
+            "format": "nullable",
+            "example": 1000
+          },
+          "format": {
+            "type": "string",
+            "format": "nullable"
+          },
+          "sku": {
+            "type": "string",
+            "format": "nullable",
+            "example": "SKU0001"
+          },
+          "background": {
+            "properties": {
+              "full": {
+                "type": "string",
+                "example": "https://cdn.theporndb.net/bg-her-office-couch.jpg"
+              },
+              "large": {
+                "type": "string",
+                "example": "https://cdn.theporndb.net/bg-her-office-couch.jpg"
+              },
+              "medium": {
+                "type": "string",
+                "example": "https://cdn.theporndb.net/bg-her-office-couch.jpg"
+              },
+              "small": {
+                "type": "string",
+                "example": "https://cdn.theporndb.net/bg-her-office-couch.jpg"
+              }
+            },
+            "type": "object"
+          },
+          "media": {
+            "$ref": "#/components/schemas/MediaResource"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2021-11-15 17:05:21"
+          },
+          "last_updated": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-11-08 23:08:36"
+          },
+          "performers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PerformerResource"
+            }
+          },
+          "site": {
+            "$ref": "#/components/schemas/SiteResource"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TagResource"
+            }
+          },
+          "hashes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SceneHashBasicResponse"
+            }
+          },
+          "markers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MarkerResource"
+            }
+          },
+          "directors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DirectorResource"
+            }
+          },
+          "scenes": {
+            "description": "If this entity is a movie, contains scenes attached",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SceneResource"
+            }
+          },
+          "movies": {
+            "description": "If this entity is a scene, contains movies this scene appears in",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SceneResource"
+            }
+          },
+          "links": {
+            "type": "object",
+            "example": {
+              "IAFD": null,
+              "Example": "https://example.com"
+            },
+            "nullable": true,
+            "additionalProperties": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        },
+        "type": "object"
+      },
+      "SiteResource": {
+        "properties": {
+          "uuid": {
+            "type": "string",
+            "example": "d284e2a0-789d-4e6c-beb9-6e61c24e8b84"
+          },
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "parent_id": {
+            "type": "number",
+            "example": 1
+          },
+          "network_id": {
+            "type": "number",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Naughty Office"
+          },
+          "short_name": {
+            "type": "string",
+            "example": "naughtyoffice"
+          },
+          "url": {
+            "type": "string",
+            "example": "https://naughtyamerica.com"
+          },
+          "description": {
+            "type": "string",
+            "example": "Naughty Office is a part of the Naughty America network"
+          },
+          "rating": {
+            "type": "number",
+            "format": "float",
+            "example": "0.5"
+          },
+          "logo": {
+            "type": "string",
+            "example": "https://cdn.theporndb.net/sites/d3/73/cb/44446a029f913811d70d08da82b217b/logo/naughtyoffice-logo.png"
+          },
+          "favicon": {
+            "type": "string",
+            "example": "https://cdn.theporndb.net/sites/fb/27/fd/465cd84a5c23b5913fcea29997eebbf/favicon/naughtyoffice-logo.png"
+          },
+          "poster": {
+            "type": "string",
+            "example": "https://cdn.theporndb.net/sites/f8/3a/f9/3df72d815bb9e3f376ab46cbee08beb/poster/poster.jpg"
+          },
+          "network": {
+            "$ref": "#/components/schemas/SiteResource"
+          },
+          "parent": {
+            "$ref": "#/components/schemas/SiteResource"
+          }
+        },
+        "type": "object"
+      },
+      "TagResource": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": "1"
+          },
+          "uuid": {
+            "type": "string",
+            "example": "d284e2a0-789d-4e6c-beb9-6e61c24e8b84"
+          },
+          "name": {
+            "type": "string",
+            "example": "American"
+          },
+          "parents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TagResource"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "UserResource": {
+        "description": "A resource that contains information about a user",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 123
+          },
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          }
+        },
+        "type": "object"
+      },
+      "SceneHashBasicResponse": {
+        "properties": {
+          "can_delete": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-11-08T23:08:36+00:00"
+          },
+          "duration": {
+            "type": "integer"
+          },
+          "hash": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "scene_id": {
+            "type": "integer"
+          },
+          "submissions": {
+            "type": "integer"
+          },
+          "type": {
+            "$ref": "#/components/schemas/SceneHashEnum"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-11-08T23:08:36+00:00"
+          }
+        },
+        "type": "object"
+      },
+      "SceneCardResponse": {
+        "properties": {
+          "background": {
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "nullable": true
+          },
+          "default_background": {
+            "type": "string",
+            "nullable": true
+          },
+          "duration": {
+            "type": "integer",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "nullable": true
+          },
+          "is_collected": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "is_hidden": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "link": {
+            "type": "string",
+            "nullable": true
+          },
+          "performers": {
+            "nullable": true
+          },
+          "site": {
+            "nullable": true
+          },
+          "slug": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/SceneTypeEnum"
+          }
+        },
+        "type": "object"
+      },
+      "Meta": {
+        "description": "Pagination meta data",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "example": 210
+          },
+          "per_page": {
+            "type": "integer",
+            "example": 25
+          },
+          "current_page": {
+            "type": "integer",
+            "example": 3
+          },
+          "last": {
+            "type": "integer",
+            "example": 10
+          }
+        },
+        "type": "object"
+      }
+    },
+    "responses": {
+      "404": {
+        "description": "Not Found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "description": "Not Found",
+              "properties": {
+                "message": {
+                  "description": "Error message",
+                  "type": "string",
+                  "example": "Not Found"
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "Unauthorized",
+        "content": {
+          "application/json": {
+            "schema": {
+              "description": "Unauthorized",
+              "properties": {
+                "message": {
+                  "description": "Error message",
+                  "type": "string",
+                  "example": "Unauthorized"
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "PerformerSearchRequestAge": {
+        "name": "age",
+        "in": "query",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "PerformerSearchRequestAgeOperation": {
+        "name": "age_operation",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/SearchOperationEnum"
+        }
+      },
+      "PerformerSearchRequestBand": {
+        "name": "band",
+        "in": "query",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "PerformerSearchRequestBandOperation": {
+        "name": "band_operation",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/SearchOperationEnum"
+        }
+      },
+      "PerformerSearchRequestBirthplaceCode": {
+        "name": "birthplace_code",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/PerformerBirthplaceCodeEnum"
+        }
+      },
+      "PerformerSearchRequestCup": {
+        "name": "cup",
+        "in": "query",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "PerformerSearchRequestEthnicity": {
+        "name": "ethnicity",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/PerformerEthnicityEnum"
+        }
+      },
+      "PerformerSearchRequestEyeColour": {
+        "name": "eye_colour",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/PerformerEyeColourEnum"
+        }
+      },
+      "PerformerSearchRequestFakeBoobs": {
+        "name": "fake_boobs",
+        "in": "query",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "PerformerSearchRequestGender": {
+        "name": "gender",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/PerformerGenderEnum"
+        }
+      },
+      "PerformerSearchRequestHairColour": {
+        "name": "hair_colour",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/PerformerHairColourEnum"
+        }
+      },
+      "PerformerSearchRequestHeight": {
+        "name": "height",
+        "in": "query",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "PerformerSearchRequestHeightOperation": {
+        "name": "height_operation",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/SearchOperationEnum"
+        }
+      },
+      "PerformerSearchRequestHip": {
+        "name": "hip",
+        "in": "query",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "PerformerSearchRequestHipOperation": {
+        "name": "hip_operation",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/SearchOperationEnum"
+        }
+      },
+      "PerformerSearchRequestIsHidden": {
+        "name": "is_hidden",
+        "in": "query",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "PerformerSearchRequestLetter": {
+        "name": "letter",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The letter the name begins with",
+          "type": "string",
+          "example": "A"
+        }
+      },
+      "PerformerSearchRequestNationality": {
+        "name": "nationality",
+        "in": "query",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "PerformerSearchRequestNoGender": {
+        "name": "no_gender",
+        "in": "query",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "PerformerSearchRequestOrderBy": {
+        "name": "orderBy",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/PerformerOrderEnum"
+        }
+      },
+      "PerformerSearchRequestPerPage": {
+        "name": "per_page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The number of results per page",
+          "type": "integer",
+          "maximum": 100,
+          "minimum": 1,
+          "example": 10
+        }
+      },
+      "PerformerSearchRequestQ": {
+        "name": "q",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The search query",
+          "type": "string",
+          "example": "Bailey Brooke"
+        }
+      },
+      "PerformerSearchRequestSameSexOnly": {
+        "name": "same_sex_only",
+        "in": "query",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "PerformerSearchRequestWaist": {
+        "name": "waist",
+        "in": "query",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "PerformerSearchRequestWaistOperation": {
+        "name": "waist_operation",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/SearchOperationEnum"
+        }
+      },
+      "PerformerSearchRequestWeight": {
+        "name": "weight",
+        "in": "query",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "PerformerSearchRequestWeightOperation": {
+        "name": "weight_operation",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/SearchOperationEnum"
+        }
+      },
+      "PerformerSiteSearchRequestIsHidden": {
+        "name": "is_hidden",
+        "in": "query",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "PerformerSiteSearchRequestLetter": {
+        "name": "letter",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The letter the name begins with",
+          "type": "string",
+          "example": "A"
+        }
+      },
+      "PerformerSiteSearchRequestOrderBy": {
+        "name": "orderBy",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/PerformerSiteOrderEnum"
+        }
+      },
+      "PerformerSiteSearchRequestParent": {
+        "name": "parent",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The parent to filter by",
+          "type": "string",
+          "example": "Lisa Ann"
+        }
+      },
+      "PerformerSiteSearchRequestParentId": {
+        "name": "parent_id",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The parent ID to filter by",
+          "type": "integer",
+          "example": 100
+        }
+      },
+      "PerformerSiteSearchRequestParentOperation": {
+        "name": "parent_operation",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/PerformerSiteParentOperationEnum"
+        }
+      },
+      "PerformerSiteSearchRequestPerPage": {
+        "name": "per_page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The number of results per page",
+          "type": "integer",
+          "maximum": 100,
+          "minimum": 1,
+          "example": 10
+        }
+      },
+      "PerformerSiteSearchRequestQ": {
+        "name": "q",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The search query",
+          "type": "string",
+          "example": "Bailey Brooke"
+        }
+      },
+      "PerformerSiteSearchRequestSite": {
+        "name": "site",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The site to filter by",
+          "type": "string",
+          "example": "Bang Bros"
+        }
+      },
+      "PerformerSiteSearchRequestSiteId": {
+        "name": "site_id",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The site ID to filter by",
+          "type": "integer",
+          "example": 100
+        }
+      },
+      "SceneSearchRequestCategoryId": {
+        "name": "category_id",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The category ID to filter by",
+          "type": "integer",
+          "example": 1
+        }
+      },
+      "SceneSearchRequestDate": {
+        "name": "date",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The date to filter by",
+          "type": "string",
+          "example": "2021-01-01"
+        }
+      },
+      "SceneSearchRequestDateOperation": {
+        "name": "date_operation",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "$ref": "#/components/schemas/SearchOperationEnum"
+        }
+      },
+      "SceneSearchRequestDirectorAnd": {
+        "name": "director_and",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "Whether to filter by all directors or any",
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "SceneSearchRequestDirectorId": {
+        "name": "director_id",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The director ID to filter by",
+          "type": "integer",
+          "example": 1
+        }
+      },
+      "SceneSearchRequestDirectors": {
+        "name": "directors",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The directors to filter by",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "Test"
+          ]
+        }
+      },
+      "SceneSearchRequestDuration": {
+        "name": "duration",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The duration to filter by",
+          "type": "integer",
+          "minimum": 0,
+          "example": 100
+        }
+      },
+      "SceneSearchRequestDurationOperation": {
+        "name": "duration",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/SearchOperationEnum"
+        }
+      },
+      "SceneSearchRequestExternalId": {
+        "name": "external_id",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The external ID to filter by",
+          "type": "string",
+          "example": "123"
+        }
+      },
+      "SceneSearchRequestHash": {
+        "name": "hash",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The hash to filter by",
+          "type": "string",
+          "example": "123"
+        }
+      },
+      "SceneSearchRequestHashType": {
+        "name": "hashType",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "$ref": "#/components/schemas/SceneHashEnum"
+        }
+      },
+      "SceneSearchRequestIsCollected": {
+        "name": "is_collected",
+        "in": "query",
+        "schema": {
+          "description": "Whether the scene is in your collection",
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "SceneSearchRequestIsFavourite": {
+        "name": "is_favourite",
+        "in": "query",
+        "schema": {
+          "description": "Whether the scene is in your favourites",
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "SceneSearchRequestIsHidden": {
+        "name": "is_hidden",
+        "in": "query",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "SceneSearchRequestNoPerformerGenders": {
+        "name": "no_performer_genders",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "Whether to filter by no performer genders",
+          "type": "boolean",
+          "example": false
+        }
+      },
+      "SceneSearchRequestNoPerformers": {
+        "name": "no_performers",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "Whether to filter by no performers",
+          "type": "boolean",
+          "example": false
+        }
+      },
+      "SceneSearchRequestOrderBy": {
+        "name": "orderBy",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/SearchOrderEnum"
+        }
+      },
+      "SceneSearchRequestParse": {
+        "name": "parse",
+        "in": "query",
+        "schema": {
+          "description": "Parse a string into a searchable phrase",
+          "type": "string",
+          "example": "Bang.Bros.2023-01-01.Brooke.Bailey.XXX"
+        }
+      },
+      "SceneSearchRequestPerPage": {
+        "name": "per_page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The number of results per page",
+          "type": "integer",
+          "maximum": 100,
+          "minimum": 1,
+          "example": 10
+        }
+      },
+      "SceneSearchRequestPerformerAnd": {
+        "name": "performer_and",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "Whether to filter by all performers or any",
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "SceneSearchRequestPerformerGenderAnd": {
+        "name": "performer_gender_and",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "Whether to filter by all performer genders or any",
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "SceneSearchRequestPerformerGenderOnly": {
+        "name": "performer_gender_only",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "Whether to filter by all performer genders only",
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "SceneSearchRequestPerformerGenders": {
+        "name": "performer_genders",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The performer genders to filter by",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "Female",
+            "Male"
+          ]
+        }
+      },
+      "SceneSearchRequestPerformerId": {
+        "name": "performer_id",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The performer ID to filter by",
+          "type": "integer",
+          "example": 1
+        }
+      },
+      "SceneSearchRequestPerformers": {
+        "name": "performers",
+        "in": "query",
+        "required": false,
+        "style": "deepObject",
+        "schema": {
+          "description": "The performer names to filter by",
+          "type": "object",
+          "example": {
+            "84060": "Mia Malkova"
+          }
+        }
+      },
+      "SceneSearchRequestQ": {
+        "name": "q",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The search query",
+          "type": "string",
+          "example": "Bailey Brooke"
+        }
+      },
+      "SceneSearchRequestQueryOperation": {
+        "name": "queryOperation",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "$ref": "#/components/schemas/SearchOperationEnum"
+        }
+      },
+      "SceneSearchRequestSite": {
+        "name": "site",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The site to filter by",
+          "type": "string",
+          "example": "Bang Bros"
+        }
+      },
+      "SceneSearchRequestSiteAnd": {
+        "name": "site_and",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "Whether to filter by all sites or any",
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "SceneSearchRequestSiteId": {
+        "name": "site_id",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The site ID to filter by",
+          "type": "integer",
+          "example": 100
+        }
+      },
+      "SceneSearchRequestSiteOperation": {
+        "name": "site_operation",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "$ref": "#/components/schemas/SearchSiteOperationEnum"
+        }
+      },
+      "SceneSearchRequestSites": {
+        "name": "sites",
+        "in": "query",
+        "required": false,
+        "style": "deepObject",
+        "schema": {
+          "description": "The site names to filter by",
+          "type": "object",
+          "example": {
+            "92": "Brazzers"
+          }
+        }
+      },
+      "SceneSearchRequestSku": {
+        "name": "sku",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The SKU to filter by",
+          "type": "string",
+          "example": "123"
+        }
+      },
+      "SceneSearchRequestTagAnd": {
+        "name": "tag_and",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "Whether to filter by all tags or any",
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "SceneSearchRequestTags": {
+        "name": "tags",
+        "in": "query",
+        "required": false,
+        "style": "deepObject",
+        "schema": {
+          "description": "The tags to filter by",
+          "type": "object",
+          "example": {
+            "70": "Anal"
+          }
+        }
+      },
+      "SceneSearchRequestTitle": {
+        "name": "title",
+        "in": "query",
+        "schema": {
+          "description": "The title to search by",
+          "type": "string",
+          "example": "Bailey Brooke"
+        }
+      },
+      "SceneSearchRequestUrl": {
+        "name": "url",
+        "in": "query",
+        "schema": {
+          "description": "The url to filter by",
+          "type": "string"
+        }
+      },
+      "SceneSearchRequestYear": {
+        "name": "year",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The scene release year",
+          "type": "integer",
+          "example": 2014
+        }
+      },
+      "SiteSearchRequestLetter": {
+        "name": "letter",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The search first letter",
+          "type": "string",
+          "example": "A"
+        }
+      },
+      "SiteSearchRequestNetwork": {
+        "name": "network",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The network to filter by",
+          "type": "string",
+          "example": "Bang Bros"
+        }
+      },
+      "SiteSearchRequestNetworkId": {
+        "name": "network_id",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The network ID to filter by",
+          "type": "integer",
+          "example": 100
+        }
+      },
+      "SiteSearchRequestOrderBy": {
+        "name": "orderBy",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/SiteOrderEnum"
+        }
+      },
+      "SiteSearchRequestParent": {
+        "name": "parent",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The parent to filter by",
+          "type": "string",
+          "example": "Bang Bros"
+        }
+      },
+      "SiteSearchRequestParentId": {
+        "name": "parent_id",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The parent ID to filter by",
+          "type": "integer",
+          "example": 100
+        }
+      },
+      "SiteSearchRequestPerPage": {
+        "name": "per_page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The number of results per page",
+          "type": "integer",
+          "maximum": 100,
+          "minimum": 1,
+          "example": 10
+        }
+      },
+      "SiteSearchRequestQ": {
+        "name": "q",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The search query",
+          "type": "string",
+          "example": "Brazzers"
+        }
+      },
+      "SuggestedChangesSearchRequestModelId": {
+        "name": "model_id",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The user id of changes",
+          "type": "number",
+          "example": "1"
+        }
+      },
+      "SuggestedChangesSearchRequestModelType": {
+        "name": "model_type",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The user id of changes",
+          "type": "string",
+          "example": "App\\Models\\Scene"
+        }
+      },
+      "SuggestedChangesSearchRequestOrderBy": {
+        "name": "orderBy",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/SuggestedChangesOrderEnum"
+        }
+      },
+      "SuggestedChangesSearchRequestPerPage": {
+        "name": "per_page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The number of results per page",
+          "type": "integer",
+          "maximum": 100,
+          "minimum": 5,
+          "example": 10
+        }
+      },
+      "SuggestedChangesSearchRequestSource": {
+        "name": "source",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "$ref": "#/components/schemas/SuggestedChangesSourceEnum"
+        }
+      },
+      "SuggestedChangesSearchRequestStatus": {
+        "name": "status",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "$ref": "#/components/schemas/SuggestedChangesStatusEnum"
+        }
+      },
+      "SuggestedChangesSearchRequestUserId": {
+        "name": "user",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The user id of changes",
+          "type": "number",
+          "example": "1"
+        }
+      },
+      "TagSearchRequestOrderBy": {
+        "name": "orderBy",
+        "in": "query",
+        "schema": {
+          "$ref": "#/components/schemas/TagOrderEnum"
+        }
+      },
+      "TagSearchRequestPerPage": {
+        "name": "per_page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The number of results per page",
+          "type": "integer",
+          "maximum": 100,
+          "minimum": 1,
+          "example": 10
+        }
+      },
+      "TagSearchRequestQ": {
+        "name": "q",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The search query",
+          "type": "string",
+          "example": "Anal"
+        }
+      },
+      "SceneType": {
+        "name": "SceneType",
+        "in": "path",
+        "description": "The type of scene to get",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "JAV",
+            "Movie",
+            "Scene"
+          ]
+        }
+      },
+      "per_page": {
+        "name": "per_page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The number of results on page",
+          "type": "integer",
+          "default": 24,
+          "maximum": 100,
+          "minimum": 1,
+          "example": 24
+        }
+      },
+      "page": {
+        "name": "page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "description": "The page of results to return",
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "example": 1
+        }
+      },
+      "Identifier": {
+        "name": "identifier",
+        "in": "path",
+        "description": "Identifier for this entity, can be slug, id or uuid",
+        "required": true,
+        "schema": {
+          "description": "Identifier for this entity, can be slug, id or uuid",
+          "type": "string",
+          "example": "7e8d5654-2ca4-46de-ac1e-8683f9e7f778"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "apiKey",
+        "description": "Enter token",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Scenes",
+      "description": "Scenes"
+    },
+    {
+      "name": "Jav",
+      "description": "Jav"
+    },
+    {
+      "name": "Movies",
+      "description": "Movies"
+    },
+    {
+      "name": "Bulk",
+      "description": "Bulk"
+    },
+    {
+      "name": "Changes",
+      "description": "Changes"
+    },
+    {
+      "name": "Directors",
+      "description": "Directors"
+    },
+    {
+      "name": "Favorites",
+      "description": "Favorites"
+    },
+    {
+      "name": "Hashes",
+      "description": "Hashes"
+    },
+    {
+      "name": "User",
+      "description": "User"
+    },
+    {
+      "name": "PerformerSites",
+      "description": "PerformerSites"
+    },
+    {
+      "name": "Performers",
+      "description": "Performers"
+    },
+    {
+      "name": "Ratings",
+      "description": "Ratings"
+    },
+    {
+      "name": "Sites",
+      "description": "Sites"
+    },
+    {
+      "name": "Tags",
+      "description": "Tags"
+    },
+    {
+      "name": "Collection",
+      "description": "Collection"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ]
+}
