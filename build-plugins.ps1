@@ -145,7 +145,7 @@ function Update-IndexYml {
     Write-Status "Updating index.yml"
     
     $indexPath = Join-Path $PSScriptRoot "index.yml"
-    $currentDate = Get-Date -Format "yyyy-MM-dd"
+    $currentDate = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     
     # Load current index or create new
     if (Test-Path $indexPath) {
@@ -183,21 +183,13 @@ function Update-IndexYml {
         $entry = @"
 - id: $pluginId
   name: $pluginName
+  metadata:
+    description: $pluginDescription
   version: $($package.Version)
   date: $currentDate
-  requires: []
-  path: $downloadUrl
+  path: $($package.PackageName)
   sha256: $($package.SHA256)
-  metadata:
-    author: ATreemanDork
-    description: $pluginDescription
-    homepage: https://github.com/ATreemanDork/treeman-stash-plugins
-    license: AGPL-3.0
-    tags:
-      - performer
-      - sync
-      - metadata
-    stash_version: ">=0.20.0"
+  requires: []
 "@
         $entries += $entry
     }

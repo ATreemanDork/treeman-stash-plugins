@@ -556,14 +556,33 @@ The `references/schema - introspection_results/` directory contains GraphQL sche
 ```
 treeman-stash-plugins/
 ├── README.md                    # This file - main documentation
+├── index.yml                    # Plugin source file (Stash-compatible format)
+├── build-plugins.ps1           # Build automation (generates packages + index.yml)
+├── deploy-github-pages.ps1     # GitHub Pages deployment automation
 ├── validator/                   # Node.js schema validation system
-├── _template/                   # Plugin creation templates  
+│   ├── index.js                # Main validator (expects plugins/ directory)
+│   ├── package.json            # Node dependencies
+│   └── plugin.schema.json      # Official Stash plugin schema
+├── _template/                   # Plugin creation templates
+│   ├── template_plugin.yml     # Plugin manifest template
+│   ├── template_plugin.py      # Python script template
+│   ├── README_template.md      # Documentation template
+│   ├── requirements.txt        # Python dependencies example
+│   ├── package.json            # Node.js dependencies example
+│   └── .gitignore              # Common exclusions
 ├── PerformerSiteSync/          # Reference implementation plugin
+│   ├── performer_site_sync.yml # Plugin manifest
+│   ├── performer_site_sync.py  # Main plugin script
+│   ├── requirements.txt        # Plugin dependencies
+│   └── modules/                # Plugin modules directory
 ├── references/                  # API schemas and technical references
-│   └── schema - introspection_results/  # External API schema definitions
+│   └── introspection_results/  # External API schema definitions
 ├── validate.* scripts          # Cross-platform validation tools
-├── new-plugin.ps1              # Automated plugin generator
+├── validate_all.ps1           # PowerShell validation orchestrator
+├── test-integration.ps1       # Integration testing script
 └── .github/workflows/          # CI/CD automation
+    ├── release.yml             # Main build and release workflow
+    └── deploy-pages.yml        # GitHub Pages deployment workflow
 ```
 
 ### AI Assistant Quick Start
@@ -580,6 +599,17 @@ treeman-stash-plugins/
 - **Documentation updates**: Maintain README.md consistency across plugins
 - **Cross-platform compatibility**: Test validation scripts on Windows/Linux/macOS
 - **Schema compliance**: Ensure all YAML manifests match plugin.schema.json
+- **Index.yml maintenance**: Ensure format matches stashapp/CommunityScripts standard
+- **GitHub Pages deployment**: Use deploy-github-pages.ps1 for publishing updates
+- **Build system maintenance**: Monitor build-plugins.ps1 for package generation accuracy
+
+### Known Issues & Solutions for AI Reference
+1. **GitHub Pages Propagation**: index.yml changes may take 5-10 minutes to appear at https://atreemandork.github.io/index.yml
+2. **Node.js Validator Path Issues**: Validator looks for plugins/ directory, use specific file paths for validation
+3. **PowerShell Module Dependencies**: Microsoft.WinGet.Client may need installation for profile compatibility
+4. **YAML Syntax Sensitivity**: Stash Plugin Manager requires exact format match - metadata.description at top level
+5. **Build Script Correlation**: SHA256 in index.yml must match actual ZIP file hash for Plugin Manager acceptance
+6. **Template File Dependencies**: template_plugin.py must exist in _template/ for complete template functionality
 
 ### Reference Links for AI Context
 - [Stash Plugin Development](https://docs.stashapp.cc/plugins/plugins) - Official plugin documentation
@@ -588,12 +618,39 @@ treeman-stash-plugins/
 - [JSON Schema Specification](https://json-schema.org/) - Schema validation standard
 - [AJV Schema Validator](https://ajv.js.org/) - Node.js validation library used
 - [Stash Community Scripts](https://github.com/stashapp/CommunityScripts) - Community plugin examples
+- [Official Stash Community index.yml](https://stashapp.github.io/CommunityScripts/stable/index.yml) - Format reference
+
+### Current System Status (July 2025)
+- **✅ Plugin Source Live**: https://atreemandork.github.io/index.yml (Stash-compatible format)
+- **✅ Build System**: Automated package creation with correct SHA256 generation
+- **✅ Validation Suite**: Multi-platform validation tools operational
+- **✅ GitHub Pages**: Automated deployment from main repository to ATreemanDork.github.io
+- **✅ Template System**: Complete with Python script template for new plugin creation
+- **✅ Integration Tests**: test-integration.ps1 validates complete system functionality
+- **⚠️ GitHub Pages Propagation**: Allow 5-10 minutes for changes to appear live
+- **📋 Next Steps**: Monitor user adoption, add new plugins using template system
 
 ### Plugin Source Information
 - **Source URL**: `https://atreemandork.github.io/index.yml`
 - **Distribution**: GitHub Releases with automatic packaging
 - **Installation**: Stash Plugin Manager compatible
 - **Updates**: Automatic version detection and semantic versioning
+
+### Recent Development Context (July 2025)
+- **index.yml Format**: Recently updated to match official Stash community format (metadata.description at top level, path as filename only)
+- **GitHub Pages Deployment**: Automated deployment system active at `ATreemanDork.github.io` repository
+- **Build System Status**: PowerShell-based build-plugins.ps1 generates correct index.yml format automatically
+- **Template System**: Complete with Python script template (template_plugin.py) added to _template/ directory
+- **Validation System**: Multi-platform validation working (Node.js + Python + PowerShell coordination)
+- **Integration Status**: Plugin Manager compatibility confirmed, follows stashapp/CommunityScripts format standards
+
+### Critical Implementation Notes for AI Continuation
+1. **Index.yml Format**: Must match official format - `metadata.description` at top level, `path` as filename not URL
+2. **GitHub Pages Structure**: Two repositories - main development repo + ATreemanDork.github.io for hosting
+3. **Build Script Dependencies**: build-plugins.ps1 requires proper date format "yyyy-MM-dd HH:mm:ss"
+4. **Template Completeness**: _template/ directory contains all required files including Python script
+5. **Deployment Chain**: build-plugins.ps1 → deploy-github-pages.ps1 → GitHub Pages propagation
+6. **Validation Requirements**: Node.js validator expects specific plugin directory structure, Python validator focuses on configuration
 
 ## 📄 License
 
