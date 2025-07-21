@@ -11,7 +11,7 @@ import requests
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Tuple
 import logging
-from .config import PluginConfig
+from .config import ConfigManager
 from .utils import setup_logging
 
 logger = logging.getLogger(__name__)
@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 class ConfigValidator:
     """Validates plugin configuration and external API connectivity."""
     
-    def __init__(self, config: PluginConfig):
+    def __init__(self, config: ConfigManager):
         """Initialize validator with plugin configuration."""
         self.config = config
         self.validation_results = {}

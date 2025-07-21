@@ -192,3 +192,16 @@ class ConfigManager:
         self._endpoints = None
         self._sources = None
         log.info("Configuration reloaded")
+
+    def get_setting(self, setting_name: str, default_value: Any = None) -> Any:
+        """Get a plugin setting value with optional default"""
+        return self.plugin_config.get(setting_name, default_value)
+    
+    def get_stashbox_endpoints(self) -> Dict[str, Dict[str, str]]:
+        """Get all configured stashbox endpoints"""
+        return self.endpoints
+    
+    def get_current_timestamp(self) -> str:
+        """Get current timestamp as string"""
+        from datetime import datetime
+        return datetime.now().isoformat()
