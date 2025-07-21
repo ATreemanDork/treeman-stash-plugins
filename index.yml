@@ -1,25 +1,20 @@
 # Treeman's Stash Plugins Repository
 # Source URL for Stash Plugin Manager: https://atreemandork.github.io/index.yml
 
-- id: performer-site-sync
+- id: performersitesync
   name: PerformerSiteSync
   version: 1.0.0
-  date: 2025-01-20
+  date: 2025-07-20
   requires: []
   path: https://github.com/ATreemanDork/treeman-stash-plugins/releases/download/v1.0.0/PerformerSiteSync-1.0.0.zip
-  sha256: # Will be automatically generated during release
+  sha256: 8ebc8c5441588aa869eb5438b8871d2cbc786fa1354afd89def3203f4ed4dcb0
   metadata:
     author: ATreemanDork
-    description: Multi-source performer & site synchronization with StashDB, ThePornDB, and FansDB
+    description: Advanced Stash plugin
     homepage: https://github.com/ATreemanDork/treeman-stash-plugins
     license: AGPL-3.0
     tags:
       - performer
-      - site
       - sync
-      - stashdb
-      - theporndb
-      - fansdb
       - metadata
-    python_version: ">=3.8"
     stash_version: ">=0.20.0"
