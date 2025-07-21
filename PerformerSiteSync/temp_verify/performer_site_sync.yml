@@ -1,0 +1,125 @@
+name: PerformerSiteSync
+description: Sync performer data between StashDB, ThePornDB, FansDB and local Stash with manual trigger controls.
+version: 1.0.0
+url: https://github.com/stashapp/CommunityScripts
+ui:
+  javascript:
+    - performer_site_sync.js
+settings:
+  cacheExpirationHours:
+    displayName: Cache Expiration (Hours)
+    description: How long to cache external API responses before refreshing (1-168 hours)
+    type: NUMBER
+  rateLimit:
+    displayName: Rate Limit (Seconds)
+    description: Delay between API requests to prevent rate limiting (0-10 seconds)
+    type: NUMBER
+  enableStashDB:
+    displayName: Enable StashDB Sync
+    description: Enable synchronization with StashDB endpoint
+    type: BOOLEAN
+  enableTPDB:
+    displayName: Enable ThePornDB Sync
+    description: Enable synchronization with ThePornDB endpoint
+    type: BOOLEAN
+  enableFansDB:
+    displayName: Enable FansDB Sync
+    description: Enable synchronization with FansDB endpoint
+    type: BOOLEAN
+  sourcePrecedence:
+    displayName: Source Precedence
+    description: Priority order for merging data (StashDB=1, TPDB=2, FansDB=3)
+    type: STRING
+  debugLogging:
+    displayName: Debug Logging
+    description: Enable detailed debug logging for troubleshooting
+    type: BOOLEAN
+  enableNameSearch:
+    displayName: Enable Name Search
+    description: Allow name-based searches when stash_ids are missing
+    type: BOOLEAN
+  autoCreateSites:
+    displayName: Auto-Create Sites
+    description: Automatically create missing sites/studios when syncing favorites
+    type: BOOLEAN
+  autoCreatePerformers:
+    displayName: Auto-Create Performers
+    description: Automatically create missing performers when syncing favorites
+    type: BOOLEAN
+  performerImageUpdate:
+    displayName: Update Performer Images
+    description: Allow updating performer images from external sources
+    type: BOOLEAN
+exec:
+  - python
+  - "{pluginDir}/performer_site_sync.py"
+interface: raw
+tasks:
+  - name: Update All Performers
+    description: Update all performers in your library with data from configured external sources (StashDB, TPDB, FansDB)
+    defaultArgs:
+      mode: update_all_performers
+  - name: Update Single Performer
+    description: Update a specific performer by ID with data from external sources
+    defaultArgs:
+      mode: update_single_performer
+  - name: Sync Favorites from All Sources
+    description: Sync favorite performers from all configured external sources to local Stash
+    defaultArgs:
+      mode: sync_all_favorites
+  - name: Sync StashDB Favorites
+    description: Sync favorite performers from StashDB only
+    defaultArgs:
+      mode: sync_stashdb_favorites
+  - name: Sync TPDB Favorites
+    description: Sync favorite performers from ThePornDB only
+    defaultArgs:
+      mode: sync_tpdb_favorites
+  - name: Sync FansDB Favorites
+    description: Sync favorite performers from FansDB only
+    defaultArgs:
+      mode: sync_fansdb_favorites
+  - name: Test Connections
+    description: Test connectivity to all configured external sources and report status
+    defaultArgs:
+      mode: test_connections
+  - name: Clear Cache
+    description: Clear all cached data from external sources to force fresh data retrieval
+    defaultArgs:
+      mode: clear_cache
+  - name: Generate Sync Report
+    description: Generate a detailed report of sync status, statistics, and configuration
+    defaultArgs:
+      mode: generate_sync_report
+  - name: Sync All Favorite Sites
+    description: Sync favorite sites/studios from all configured external sources to local Stash
+    defaultArgs:
+      mode: sync_all_favorite_sites
+  - name: Sync StashDB Sites
+    description: Sync favorite sites/studios from StashDB only
+    defaultArgs:
+      mode: sync_stashdb_sites
+  - name: Sync TPDB Sites
+    description: Sync favorite sites/studios from ThePornDB only
+    defaultArgs:
+      mode: sync_tpdb_sites
+  - name: Sync FansDB Sites
+    description: Sync favorite sites/studios from FansDB only
+    defaultArgs:
+      mode: sync_fansdb_sites
+  - name: Test Connections
+    description: Test connectivity to all configured external sources and report status
+    defaultArgs:
+      mode: test_connections
+  - name: Clear Cache
+    description: Clear all cached data from external sources to force fresh data retrieval
+    defaultArgs:
+      mode: clear_cache
+  - name: Generate Sync Report
+    description: Generate a detailed report of sync status, statistics, and configuration
+    defaultArgs:
+      mode: generate_sync_report
+  - name: Validate Configuration
+    description: Validate all endpoint configurations and API keys
+    defaultArgs:
+      mode: validate_config

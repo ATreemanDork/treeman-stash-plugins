@@ -1,0 +1,13 @@
+# Performer/Site Sync Plugin Requirements
+# These packages should be installed in your Stash Python environment
+
+requests>=2.25.0
+stashapi-tools>=2.0.0
+
+# Optional performance enhancements
+# Uncomment if you want faster JSON processing
+# orjson>=3.8.0
+
+# Optional caching enhancements  
+# Uncomment if you want Redis caching instead of SQLite
+# redis>=4.0.0

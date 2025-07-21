@@ -187,7 +187,7 @@ function Update-IndexYml {
     description: $pluginDescription
   version: $($package.Version)
   date: $currentDate
-  path: plugins/$($package.PackageName)
+  path: plugins/$($package.Name)
   sha256: $($package.SHA256)
   requires: []
 "@

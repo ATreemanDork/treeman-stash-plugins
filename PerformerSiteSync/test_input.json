@@ -1,0 +1,13 @@
+{
+  "server_connection": {
+    "Scheme": "http",
+    "Host": "localhost",
+    "Port": 9999,
+    "Dir": "",
+    "ApiKey": "YOUR_API_KEY_HERE"
+  },
+  "args": {
+    "mode": "test"
+  },
+  "plugin_id": "PerformerSiteSync"
+}
