@@ -610,6 +610,7 @@ treeman-stash-plugins/
 4. **YAML Syntax Sensitivity**: Stash Plugin Manager requires exact format match - metadata.description at top level
 5. **Build Script Correlation**: SHA256 in index.yml must match actual ZIP file hash for Plugin Manager acceptance
 6. **Template File Dependencies**: template_plugin.py must exist in _template/ for complete template functionality
+7. **Plugin Settings Schema**: Stash SettingConfig only supports displayName, description, and type fields - NO default field supported
 
 ### Reference Links for AI Context
 - [Stash Plugin Development](https://docs.stashapp.cc/plugins/plugins) - Official plugin documentation

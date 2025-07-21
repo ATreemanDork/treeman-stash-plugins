@@ -10,57 +10,46 @@ settings:
     displayName: Cache Expiration (Hours)
     description: How long to cache external API responses before refreshing (1-168 hours)
     type: NUMBER
-    default: 24
   rateLimit:
     displayName: Rate Limit (Seconds)
     description: Delay between API requests to prevent rate limiting (0-10 seconds)
     type: NUMBER
-    default: 2
   enableStashDB:
     displayName: Enable StashDB Sync
     description: Enable synchronization with StashDB endpoint
     type: BOOLEAN
-    default: true
   enableTPDB:
     displayName: Enable ThePornDB Sync
     description: Enable synchronization with ThePornDB endpoint
     type: BOOLEAN
-    default: true
   enableFansDB:
     displayName: Enable FansDB Sync
     description: Enable synchronization with FansDB endpoint
     type: BOOLEAN
-    default: true
   sourcePrecedence:
     displayName: Source Precedence
     description: Priority order for merging data (StashDB=1, TPDB=2, FansDB=3)
     type: STRING
-    default: "stashdb,tpdb,fansdb"
   debugLogging:
     displayName: Debug Logging
     description: Enable detailed debug logging for troubleshooting
     type: BOOLEAN
-    default: false
   enableNameSearch:
     displayName: Enable Name Search
     description: Allow name-based searches when stash_ids are missing
     type: BOOLEAN
-    default: true
   autoCreateSites:
     displayName: Auto-Create Sites
     description: Automatically create missing sites/studios when syncing favorites
     type: BOOLEAN
-    default: false
   autoCreatePerformers:
     displayName: Auto-Create Performers
     description: Automatically create missing performers when syncing favorites
     type: BOOLEAN
-    default: false
   performerImageUpdate:
     displayName: Update Performer Images
     description: Allow updating performer images from external sources
     type: BOOLEAN
-    default: true
 exec:
   - python
   - "{pluginDir}/performer_site_sync.py"

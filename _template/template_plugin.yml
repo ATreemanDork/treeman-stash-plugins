@@ -12,22 +12,18 @@ settings:
     displayName: Enable Main Feature
     description: Enable or disable the main plugin feature
     type: BOOLEAN
-    default: true
   apiKey:
     displayName: API Key
     description: Your API key for external service integration
     type: STRING
-    default: ""
   cacheExpirationHours:
     displayName: Cache Expiration (Hours)
     description: How long to cache data before refreshing (1-168 hours)
     type: NUMBER
-    default: 24
   debugLogging:
     displayName: Debug Logging
     description: Enable detailed debug logging for troubleshooting
     type: BOOLEAN
-    default: false
 tasks:
   - name: Main Task
     description: Primary function of this plugin
@@ -42,7 +38,8 @@ tasks:
     defaultArgs:
       mode: clear_cache
 hooks:
-  - triggeredBy:
+  - name: Scene Update Hook
+    triggeredBy:
       - Scene.Create.Post
       - Scene.Update.Post
     defaultArgs:
