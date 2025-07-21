@@ -1,0 +1,353 @@
+name: Validate Plugins
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '**/*.py'
+      - '**/*.js'
+      - 'requirements*.txt'
+      - 'package*.json'
+  push:
+    branches: [ main ]
+    paths:
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '**/*.py'
+      - '**/*.js'
+      - 'requirements*.txt'
+      - 'package*.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: 'validator/package-lock.json'
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+    
+    - name: Install Node.js dependencies
+      run: |
+        cd validator
+        npm ci
+    
+    - name: Install Python dependencies
+      run: |
+        pip install -r requirements-dev.txt || echo "No requirements-dev.txt found"
+        
+        # Install plugin-specific dependencies
+        if [ -f "PerformerSiteSync/requirements.txt" ]; then
+          pip install -r PerformerSiteSync/requirements.txt
+        fi
+    
+    - name: Run validation
+      shell: pwsh
+      run: |
+        Write-Host "🧪 Running comprehensive plugin validation..." -ForegroundColor Yellow
+        
+        # Run PowerShell validation (most comprehensive)
+        ./validate_all.ps1 -Verbose
+        
+        if ($LASTEXITCODE -ne 0) {
+          Write-Host "❌ Validation failed!" -ForegroundColor Red
+          exit 1
+        }
+        
+        Write-Host "✅ All validations passed!" -ForegroundColor Green
+    
+    - name: Test plugin imports
+      run: |
+        echo "Testing Python plugin imports..."
+        
+        # Test PerformerSiteSync imports
+        cd PerformerSiteSync
+        python -c "
+        import sys
+        sys.path.insert(0, '.')
+        try:
+            from modules import config, utils, graphql_client
+            print('✅ PerformerSiteSync modules import successfully')
+        except ImportError as e:
+            print(f'❌ Import error: {e}')
+            sys.exit(1)
+        "
+    
+    - name: Check file structure
+      shell: pwsh
+      run: |
+        Write-Host "🔍 Checking file structure..." -ForegroundColor Yellow
+        
+        # Check required files exist
+        $requiredFiles = @(
+          "README.md",
+          "LICENSE",
+          "index.yml",
+          "validator/plugin.schema.json",
+          "PerformerSiteSync/performer_site_sync.yml",
+          "PerformerSiteSync/README.md",
+          "PerformerSiteSync/requirements.txt"
+        )
+        
+        $missing = @()
+        foreach ($file in $requiredFiles) {
+          if (-not (Test-Path $file)) {
+            $missing += $file
+          }
+        }
+        
+        if ($missing.Count -gt 0) {
+          Write-Host "❌ Missing required files:" -ForegroundColor Red
+          $missing | ForEach-Object { Write-Host "  - $_" -ForegroundColor Red }
+          exit 1
+        }
+        
+        Write-Host "✅ All required files present" -ForegroundColor Green
+    
+    - name: Validate index.yml structure
+      shell: pwsh
+      run: |
+        Write-Host "📋 Validating index.yml structure..." -ForegroundColor Yellow
+        
+        if (-not (Test-Path "index.yml")) {
+          Write-Host "❌ index.yml not found" -ForegroundColor Red
+          exit 1
+        }
+        
+        $content = Get-Content "index.yml" -Raw
+        
+        # Check for required fields in each plugin entry
+        $requiredFields = @("id", "name", "version", "date", "path", "sha256")
+        
+        foreach ($field in $requiredFields) {
+          if ($content -notmatch "$field\s*:") {
+            Write-Host "⚠️  Warning: Field '$field' not found in index.yml" -ForegroundColor Yellow
+          }
+        }
+        
+        Write-Host "✅ index.yml structure validated" -ForegroundColor Green
+    
+    - name: Run Comprehensive Validation (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        # Install PowerShell on Linux
+        wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+        sudo dpkg -i packages-microsoft-prod.deb
+        sudo apt-get update
+        sudo apt-get install -y powershell
+        
+        # Run PowerShell validation script
+        pwsh -File ./validate_all.ps1 -CI
+    
+    - name: Validate PerformerSiteSync Plugin Specifically
+      run: |
+        if [ -d "PerformerSiteSync" ]; then
+          echo "Validating PerformerSiteSync plugin..."
+          cd validator
+          node index.js ../PerformerSiteSync/performer_site_sync.yml --ci
+        else
+          echo "PerformerSiteSync plugin directory not found"
+          exit 1
+        fi
+    
+    - name: Check Python syntax
+      run: |
+        python -m py_compile PerformerSiteSync/performer_site_sync.py
+        for module in PerformerSiteSync/modules/*.py; do
+          if [ -f "$module" ]; then
+            python -m py_compile "$module"
+          fi
+        done
+    
+    - name: Validate YAML syntax
+      run: |
+        python -c "
+        import yaml
+        import sys
+        import os
+        
+        def validate_yaml_file(filepath):
+            try:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    yaml.safe_load(f)
+                print(f'✅ {filepath}: Valid YAML')
+                return True
+            except yaml.YAMLError as e:
+                print(f'❌ {filepath}: Invalid YAML - {e}')
+                return False
+            except Exception as e:
+                print(f'❌ {filepath}: Error - {e}')
+                return False
+        
+        yaml_files = []
+        for root, dirs, files in os.walk('.'):
+            for file in files:
+                if file.endswith(('.yml', '.yaml')):
+                    yaml_files.append(os.path.join(root, file))
+        
+        all_valid = True
+        for yaml_file in yaml_files:
+            if not validate_yaml_file(yaml_file):
+                all_valid = False
+        
+        if not all_valid:
+            sys.exit(1)
+        "
+    
+    - name: Archive validation results
+      if: failure()
+      uses: actions/upload-artifact@v3
+      with:
+        name: validation-results-${{ matrix.node-version }}-${{ matrix.python-version }}
+        path: |
+          validation-report.txt
+          *.log
+        retention-days: 7
+
+  security-scan:
+    runs-on: ubuntu-latest
+    needs: validate-plugins
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+    
+    - name: Upload Trivy scan results to GitHub Security tab
+      uses: github/codeql-action/upload-sarif@v2
+      if: always()
+      with:
+        sarif_file: 'trivy-results.sarif'
+
+  quality-checks:
+    runs-on: ubuntu-latest
+    needs: validate-plugins
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install code quality tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 black pylint bandit safety
+    
+    - name: Run Black code formatter check
+      run: |
+        black --check --diff PerformerSiteSync/ || true
+    
+    - name: Run Flake8 linting
+      run: |
+        flake8 PerformerSiteSync/ --max-line-length=100 --ignore=E203,W503 || true
+    
+    - name: Run Pylint static analysis
+      run: |
+        pylint PerformerSiteSync/ --disable=missing-docstring,import-error || true
+    
+    - name: Run Bandit security linting
+      run: |
+        bandit -r PerformerSiteSync/ -f json -o bandit-report.json || true
+    
+    - name: Check for known security vulnerabilities
+      run: |
+        safety check --json --output safety-report.json || true
+    
+    - name: Upload quality reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: quality-reports
+        path: |
+          bandit-report.json
+          safety-report.json
+        retention-days: 30
+
+  documentation-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Check README files exist
+      run: |
+        echo "Checking for required documentation..."
+        
+        # Check main README
+        if [ ! -f "README.md" ]; then
+          echo "❌ Main README.md not found"
+          exit 1
+        else
+          echo "✅ Main README.md found"
+        fi
+        
+        # Check plugin README
+        if [ ! -f "PerformerSiteSync/README.md" ]; then
+          echo "❌ PerformerSiteSync README.md not found"
+          exit 1
+        else
+          echo "✅ PerformerSiteSync README.md found"
+        fi
+    
+    - name: Validate README content
+      run: |
+        echo "Validating README content structure..."
+        
+        # Check for required sections in main README
+        required_sections=("Installation" "Features" "Usage" "License")
+        for section in "${required_sections[@]}"; do
+          if grep -q "## $section\|# $section" README.md; then
+            echo "✅ Found section: $section"
+          else
+            echo "⚠️ Missing recommended section: $section"
+          fi
+        done
+        
+        # Check for plugin-specific sections
+        plugin_sections=("Configuration" "Troubleshooting" "API")
+        for section in "${plugin_sections[@]}"; do
+          if grep -q "## $section\|# $section" PerformerSiteSync/README.md; then
+            echo "✅ Found plugin section: $section"
+          else
+            echo "⚠️ Missing recommended plugin section: $section"
+          fi
+        done
+    
+    - name: Check for broken links (if any)
+      run: |
+        echo "Checking for obvious broken links..."
+        
+        # Simple check for common broken link patterns
+        if grep -r "](http" . --include="*.md" | grep -v "github.com\|stashapp\|discord" | head -10; then
+          echo "⚠️ Found external links - manual verification recommended"
+        fi
+        
+        # Check for relative links that might be broken
+        if grep -r "]\(\.\./\|]\(./" . --include="*.md" | head -10; then
+          echo "⚠️ Found relative links - manual verification recommended"
+        fi

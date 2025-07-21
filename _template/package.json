@@ -1,0 +1,26 @@
+{
+  "name": "template-plugin",
+  "version": "1.0.0",
+  "description": "Template for Node.js-based Stash plugins",
+  "main": "template_plugin.js",
+  "scripts": {
+    "start": "node template_plugin.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "stash",
+    "plugin",
+    "template"
+  ],
+  "author": "Your Name",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "axios": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,45 @@
+# GitHub Pages Configuration for Stash Plugin Source
+# This file ensures proper YAML MIME type serving
+
+plugins:
+  - jekyll-optional-front-matter
+
+# Include YAML files for serving
+include:
+  - index.yml
+
+# Exclude everything else we don't want on GitHub Pages
+exclude:
+  - .github/
+  - .git/
+  - .gitignore
+  - .gitattributes
+  - .editorconfig
+  - .vscode/
+  - node_modules/
+  - dist/
+  - references/
+  - validator/
+  - _template/
+  - PerformerSiteSync/
+  - docs/
+  - "*.md"
+  - "*.json"
+  - "*.js"
+  - "*.ps1"
+  - "*.sh"
+  - "*.bat"
+  - "*.py"
+  - "*.txt"
+  - LICENSE
+
+# Disable Jekyll processing for YAML files
+kramdown:
+  input: GFM
+
+# Set proper MIME types
+defaults:
+  - scope:
+      path: "*.yml"
+    values:
+      layout: "none"

@@ -1,0 +1,233 @@
+name: Build and Release Plugins
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'PerformerSiteSync/**'
+      - '_template/**'
+      - 'build-plugins.ps1'
+      - '.github/workflows/release.yml'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (leave empty for auto-increment)'
+        required: false
+        type: string
+      plugin:
+        description: 'Specific plugin to build (leave empty for all)'
+        required: false
+        type: string
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup PowerShell
+      uses: azure/powershell@v1
+      with:
+        azPSVersion: 'latest'
+        inlineScript: |
+          # PowerShell is already available in ubuntu-latest
+          Write-Host "PowerShell version: $($PSVersionTable.PSVersion)"
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements-dev.txt || echo "No requirements-dev.txt found"
+        
+    - name: Determine version
+      id: version
+      shell: pwsh
+      run: |
+        $inputVersion = "${{ github.event.inputs.version }}"
+        
+        if ($inputVersion) {
+          $version = $inputVersion
+          Write-Host "Using input version: $version"
+        } else {
+          # Get latest release version
+          try {
+            $releases = gh release list --json tagName,isLatest | ConvertFrom-Json
+            $latestRelease = $releases | Where-Object { $_.isLatest -eq $true } | Select-Object -First 1
+            
+            if ($latestRelease) {
+              $currentVersion = $latestRelease.tagName -replace '^v', ''
+              Write-Host "Current version: $currentVersion"
+              
+              # Auto-increment patch version
+              $parts = $currentVersion.Split('.')
+              $major = [int]$parts[0]
+              $minor = [int]$parts[1]
+              $patch = [int]$parts[2] + 1
+              $version = "$major.$minor.$patch"
+            } else {
+              $version = "1.0.0"
+            }
+          } catch {
+            Write-Host "Could not determine latest release, using 1.0.0"
+            $version = "1.0.0"
+          }
+        }
+        
+        Write-Host "New version: $version"
+        echo "version=$version" >> $env:GITHUB_OUTPUT
+        echo "tag=v$version" >> $env:GITHUB_OUTPUT
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Validate plugins
+      shell: pwsh
+      run: |
+        Write-Host "Validating plugins..."
+        ./validate_all.ps1 -Verbose
+    
+    - name: Update plugin versions
+      shell: pwsh
+      run: |
+        $version = "${{ steps.version.outputs.version }}"
+        $plugin = "${{ github.event.inputs.plugin }}"
+        
+        # Update version in plugin YAML files
+        if ($plugin) {
+          $plugins = @($plugin)
+        } else {
+          $plugins = @("PerformerSiteSync")  # Add more plugins as they are created
+        }
+        
+        foreach ($pluginName in $plugins) {
+          $yamlPath = Join-Path $pluginName "$($pluginName.ToLower() -replace '[^a-z0-9_]', '_').yml"
+          if (-not (Test-Path $yamlPath)) {
+            $yamlFiles = Get-ChildItem -Path $pluginName -Filter "*.yml"
+            if ($yamlFiles.Count -gt 0) {
+              $yamlPath = $yamlFiles[0].FullName
+            }
+          }
+          
+          if (Test-Path $yamlPath) {
+            $content = Get-Content $yamlPath -Raw
+            $content = $content -replace "version:\s*[^\r\n]+", "version: $version"
+            Set-Content -Path $yamlPath -Value $content -Encoding UTF8
+            Write-Host "Updated version in $yamlPath to $version"
+          }
+        }
+    
+    - name: Build plugin packages
+      shell: pwsh
+      run: |
+        $version = "${{ steps.version.outputs.version }}"
+        $plugin = "${{ github.event.inputs.plugin }}"
+        
+        if ($plugin) {
+          ./build-plugins.ps1 -Plugin $plugin -Version $version -UpdateIndex
+        } else {
+          ./build-plugins.ps1 -All -Version $version -UpdateIndex
+        }
+    
+    - name: Commit updated files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Add updated plugin YAML files and index.yml
+        git add -A
+        
+        if ! git diff --cached --exit-code; then
+          git commit -m "Release v${{ steps.version.outputs.version }}: Update plugin versions and index"
+          git push
+        else
+          echo "No changes to commit"
+        fi
+    
+    - name: Create GitHub Release
+      uses: ncipollo/release-action@v1
+      with:
+        tag: ${{ steps.version.outputs.tag }}
+        name: Release ${{ steps.version.outputs.tag }}
+        body: |
+          ## 🚀 Release ${{ steps.version.outputs.tag }}
+          
+          ### 📦 Available Plugins
+          - **PerformerSiteSync v${{ steps.version.outputs.version }}**: Multi-source performer & site synchronization
+          
+          ### 📋 Installation
+          
+          **Method 1: Stash Plugin Manager (Recommended)**
+          1. Go to Settings → Plugins in Stash
+          2. Add source URL: `https://atreemandork.github.io/index.yml`
+          3. Install plugins directly from the Available Plugins section
+          
+          **Method 2: Manual Installation**
+          1. Download the plugin ZIP file(s) below
+          2. Extract to your Stash plugins directory
+          3. Restart Stash and enable the plugin
+          
+          ### 🔧 Configuration
+          After installation, configure plugins through Settings → Plugins → [Plugin Name] → Plugin Settings
+          
+          ### 📖 Documentation
+          - [Repository README](https://github.com/ATreemanDork/treeman-stash-plugins)
+          - [PerformerSiteSync Documentation](https://github.com/ATreemanDork/treeman-stash-plugins/tree/main/PerformerSiteSync)
+          
+          ---
+          *Generated automatically by GitHub Actions*
+        artifacts: "dist/*.zip"
+        draft: false
+        prerelease: false
+        makeLatest: true
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: .
+        destination_dir: .
+        keep_files: true
+        include_files: |
+          index.yml
+        exclude_files: |
+          .github/**
+          .git/**
+          node_modules/**
+          dist/**
+          references/**
+          validator/**
+          _template/**
+          PerformerSiteSync/**
+          *.md
+          *.json
+          *.js
+          *.ps1
+          *.sh
+          *.bat
+          *.py
+          *.txt
+    
+    - name: Notification
+      shell: pwsh
+      run: |
+        Write-Host "🎉 Release ${{ steps.version.outputs.tag }} completed successfully!" -ForegroundColor Green
+        Write-Host ""
+        Write-Host "📋 Next Steps:" -ForegroundColor Yellow
+        Write-Host "1. The index.yml is now available at: https://atreemandork.github.io/index.yml" -ForegroundColor Cyan
+        Write-Host "2. Users can add this URL to Stash Plugin Manager" -ForegroundColor Cyan
+        Write-Host "3. Plugin packages are available in the GitHub release" -ForegroundColor Cyan
+        Write-Host ""
+        Write-Host "🔗 Links:" -ForegroundColor Yellow
+        Write-Host "- Release: https://github.com/ATreemanDork/treeman-stash-plugins/releases/tag/${{ steps.version.outputs.tag }}" -ForegroundColor Cyan
+        Write-Host "- Plugin Source: https://atreemandork.github.io/index.yml" -ForegroundColor Cyan

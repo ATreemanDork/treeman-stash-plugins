@@ -1,0 +1,175 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Validate All Plugins",
+            "type": "shell",
+            "command": "pwsh",
+            "args": [
+                "-File",
+                "./validate_all.ps1",
+                "-Verbose"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "runOptions": {
+                "runOn": "default"
+            }
+        },
+        {
+            "label": "Validate PerformerSiteSync",
+            "type": "shell",
+            "command": "pwsh",
+            "args": [
+                "-File",
+                "./validate_all.ps1",
+                "-Path",
+                "PerformerSiteSync",
+                "-Verbose"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Plugin Package",
+            "type": "shell",
+            "command": "pwsh",
+            "args": [
+                "-File",
+                "./build-plugins.ps1",
+                "-Plugin",
+                "PerformerSiteSync",
+                "-UpdateIndex"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build All Plugin Packages",
+            "type": "shell",
+            "command": "pwsh",
+            "args": [
+                "-File",
+                "./build-plugins.ps1",
+                "-All",
+                "-UpdateIndex"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Test Integration",
+            "type": "shell",
+            "command": "pwsh",
+            "args": [
+                "-File",
+                "./test-integration.ps1",
+                "-All"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Create New Plugin",
+            "type": "shell",
+            "command": "pwsh",
+            "args": [
+                "-File",
+                "./new-plugin.ps1"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Node.js Schema Validation",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "main",
+                "--",
+                "-v"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/validator"
+            },
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Python Configuration Validation",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "validate_plugins.py",
+                "--verbose"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        }
+    ]
+}

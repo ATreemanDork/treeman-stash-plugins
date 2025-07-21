@@ -1,0 +1,17 @@
+# Python Plugin Template Requirements
+# Install with: pip install -r requirements.txt
+
+# Core Stash integration
+stashapi-tools>=0.2.0
+
+# HTTP requests for external APIs
+requests>=2.28.0
+
+# Data processing
+PyYAML>=6.0
+
+# Optional: Additional common libraries
+# json-schema>=4.0.0         # For data validation
+# python-dateutil>=2.8.0     # For date/time handling
+# Pillow>=9.0.0              # For image processing
+# sqlite3                    # Built-in, for local caching

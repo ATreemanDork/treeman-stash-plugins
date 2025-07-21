@@ -19,6 +19,7 @@ from modules import (
     FavoritePerformers,
     FavoriteSites
 )
+from modules.validator import ConfigValidator
 
 class PerformerSiteSyncPlugin:
     """Main plugin class that coordinates all sync operations"""
@@ -62,21 +63,39 @@ class PerformerSiteSyncPlugin:
 
     def validate_config(self) -> Dict[str, Any]:
         """Validate configuration and report issues"""
-        log.info("Validating configuration...")
+        log.info("Running comprehensive configuration validation...")
         
-        validation_result = self.config.validate_configuration()
-        
-        # Test connections as part of validation
-        connection_results = self.test_connections()
-        for source, result in connection_results.items():
-            if result["status"] != "connected":
-                validation_result["warnings"].append(
-                    f"Connection issue with {source}: {result.get('error', 'Unknown error')}"
-                )
-        
-        log.info(f"Configuration validation: {'✓ Valid' if validation_result['valid'] else '✗ Invalid'}")
-        
-        return validation_result
+        try:
+            # Initialize validator
+            validator = ConfigValidator(self.config)
+            
+            # Run full validation
+            validation_results = validator.validate_all()
+            
+            # Generate human-readable report
+            report = validator.generate_validation_report()
+            
+            # Log the report
+            log.info("Validation Report:")
+            for line in report.split('\n'):
+                log.info(line)
+            
+            # Return structured results
+            return {
+                "valid": validation_results['overall_status'],
+                "report": report,
+                "details": validation_results,
+                "timestamp": validation_results['timestamp']
+            }
+            
+        except Exception as e:
+            error_msg = f"Failed to validate configuration: {str(e)}"
+            log.error(error_msg)
+            return {
+                "valid": False,
+                "error": error_msg,
+                "timestamp": datetime.now().isoformat()
+            }
 
     def clear_cache(self) -> Dict[str, Any]:
         """Clear all cached data"""
