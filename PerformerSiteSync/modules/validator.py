@@ -12,7 +12,6 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional, Tuple
 import logging
 from .config import ConfigManager
-from .utils import setup_logging
 
 logger = logging.getLogger(__name__)
 

@@ -24,11 +24,11 @@ from modules.validator import ConfigValidator
 class PerformerSiteSyncPlugin:
     """Main plugin class that coordinates all sync operations"""
     
-    def __init__(self):
+    def __init__(self, server_connection=None):
         """Initialize the plugin with all modular components"""
         try:
             # Initialize configuration manager
-            self.config = ConfigManager()
+            self.config = ConfigManager(server_connection)
             
             # Initialize GraphQL client
             self.graphql = GraphQLClient(self.config)
@@ -180,22 +180,26 @@ class PerformerSiteSyncPlugin:
 def main():
     """Main entry point for the plugin"""
     try:
+        server_connection = None
+        
         # Parse command line arguments or JSON input
         if len(sys.argv) > 1:
             mode = sys.argv[1]
-            args = sys.argv[2:] if len(sys.argv) > 2 else []
+            args = {"mode": mode}  # Convert to dict for consistency
         else:
             # Try to read from stdin for JSON input
             try:
                 json_input = json.loads(sys.stdin.read())
+                server_connection = json_input.get("server_connection")
                 mode = json_input.get('args', {}).get('mode', 'update_all_performers')
                 args = json_input.get('args', {})
+                log.debug(f"Received JSON input with server_connection: {'Yes' if server_connection else 'No'}")
             except (json.JSONDecodeError, AttributeError):
                 mode = 'update_all_performers'
                 args = {}
 
-        # Initialize plugin
-        plugin = PerformerSiteSyncPlugin()
+        # Initialize plugin with server connection
+        plugin = PerformerSiteSyncPlugin(server_connection)
 
         log.info(f"Starting Performer/Site Sync - Mode: {mode}")
 
