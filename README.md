@@ -1,8 +1,18 @@
-# Treeman's Stash Plugins
+# Tree## 📦 Stash Plugin Index
+
+Add this index as a new source in your Stash `Settings > Plugins > Add Source`: **[https://atreemandork.github.io/index.yml](https://atreemandork.github.io/index.yml)**
+
+## 🚀 Features Stash Plugins
+
+[![Plugin Source](https://img.shields.io/badge/Stash%20Plugin%20Source-atreemandork.github.io%2Findex.yml-blue?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgMThjLTQuNDEgMC04LTMuNTktOC04czMuNTktOCA4LTggOCAzLjU5IDggOC0zLjU5IDgtOCA4eiIvPjwvc3ZnPg==)](https://atreemandork.github.io/index.yml)
 
 A collection of advanced plugins for the [Stash](https://github.com/stashapp/stash) adult media organizer, featuring sophisticated performer and site synchronization capabilities with built-in validation tools.
 
-## 🚀 Features
+## � Stash Plugin Index
+
+Add this index as a new source in your Stash `Settings > Plugins > Add Source`: **[https://atreemandork.github.io/index.yml](https://atreemandork.github.io/index.yml)**
+
+## �🚀 Features
 
 - **Performer/Site Sync**: Comprehensive synchronization between your local Stash instance and external databases (StashDB, ThePornDB, FansDB)
 - **Plugin Validation**: Automated validation tools to ensure plugin configurations meet Stash standards
@@ -597,6 +607,7 @@ This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE)
 
 ## 📊 Project Stats
 
+[![Plugin Source](https://img.shields.io/badge/Plugin%20Source-Live-brightgreen?style=flat-square)](https://atreemandork.github.io/index.yml)
 ![GitHub last commit](https://img.shields.io/github/last-commit/ATreemanDork/treeman-stash-plugins)
 ![GitHub issues](https://img.shields.io/github/issues/ATreemanDork/treeman-stash-plugins)
 ![GitHub stars](https://img.shields.io/github/stars/ATreemanDork/treeman-stash-plugins)

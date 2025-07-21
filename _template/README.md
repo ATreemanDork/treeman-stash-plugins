@@ -24,6 +24,7 @@ This directory contains templates and examples for creating new Stash plugins.
 ## Template Files
 
 - `template_plugin.yml` - Basic plugin manifest structure
+- `template_plugin.py` - Python script template
 - `README_template.md` - Documentation template
 - `requirements.txt` - Python dependencies example
 - `package.json` - Node.js dependencies example

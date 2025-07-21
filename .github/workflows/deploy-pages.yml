@@ -1,0 +1,157 @@
+name: Deploy to GitHub Pages
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      force_deploy:
+        description: 'Force deployment even without new release'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  deploy-to-pages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    steps:
+    - name: Checkout this repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Checkout GitHub Pages repository
+      uses: actions/checkout@v4
+      with:
+        repository: ATreemanDork/ATreemanDork.github.io
+        token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+        path: pages-repo
+    
+    - name: Setup PowerShell
+      shell: pwsh
+      run: |
+        Write-Host "PowerShell version: $($PSVersionTable.PSVersion)"
+    
+    - name: Build plugins
+      shell: pwsh
+      run: |
+        Write-Host "Building plugins..."
+        ./build-plugins.ps1 -All -UpdateIndex
+    
+    - name: Copy files to Pages repository
+      shell: pwsh
+      run: |
+        $pagesPath = "pages-repo"
+        
+        # Ensure plugins directory exists
+        $pluginsDir = Join-Path $pagesPath "plugins"
+        if (-not (Test-Path $pluginsDir)) {
+          New-Item -Path $pluginsDir -ItemType Directory -Force
+        }
+        
+        # Copy index.yml
+        if (Test-Path "index.yml") {
+          Copy-Item -Path "index.yml" -Destination $pagesPath -Force
+          Write-Host "✅ Copied index.yml"
+        }
+        
+        # Copy plugin ZIP files
+        $zipFiles = Get-ChildItem -Path "dist" -Filter "*.zip" -ErrorAction SilentlyContinue
+        foreach ($zip in $zipFiles) {
+          $destPath = Join-Path $pluginsDir $zip.Name
+          Copy-Item -Path $zip.FullName -Destination $destPath -Force
+          Write-Host "✅ Copied $($zip.Name)"
+        }
+        
+        # Create a simple index.html for the plugins directory
+        $indexHtml = @'
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stash Plugins</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        .plugin { margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        .download { color: #007cba; text-decoration: none; }
+        .download:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Treeman's Stash Plugins</h1>
+    <p>Plugin source for Stash Plugin Manager: <code>https://atreemandork.github.io/index.yml</code></p>
+    
+    <h2>Available Plugin Packages</h2>
+'@
+        
+        foreach ($zip in $zipFiles) {
+          $indexHtml += @"
+    <div class="plugin">
+        <strong>$($zip.BaseName)</strong><br>
+        <a href="plugins/$($zip.Name)" class="download">Download $($zip.Name)</a>
+    </div>
+"@
+        }
+        
+        $indexHtml += @'
+    
+    <h2>Installation</h2>
+    <ol>
+        <li>Open Stash and go to <strong>Settings → Plugins</strong></li>
+        <li>In "Available Plugins" section, click "Add Source"</li>
+        <li>Enter source URL: <code>https://atreemandork.github.io/index.yml</code></li>
+        <li>Browse and install plugins directly through Stash</li>
+    </ol>
+    
+    <p><a href="https://github.com/ATreemanDork/treeman-stash-plugins">View source code on GitHub</a></p>
+</body>
+</html>
+'@
+        
+        Set-Content -Path (Join-Path $pagesPath "index.html") -Value $indexHtml -Encoding UTF8
+        Write-Host "✅ Created index.html"
+    
+    - name: Commit and push to Pages repository
+      shell: pwsh
+      working-directory: pages-repo
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Check if there are changes
+        $status = git status --porcelain
+        if ($status) {
+          Write-Host "Changes detected:"
+          $status | ForEach-Object { Write-Host "  $_" }
+          
+          # Add all changes
+          git add .
+          
+          # Create commit message
+          $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+          $commitMessage = "Update Stash plugins - $timestamp"
+          
+          # Commit and push
+          git commit -m $commitMessage
+          git push origin main
+          
+          Write-Host "✅ Successfully deployed to GitHub Pages!"
+        } else {
+          Write-Host "No changes detected, skipping deployment"
+        }
+    
+    - name: Verify deployment
+      shell: pwsh
+      run: |
+        Write-Host "🎉 Deployment completed!" -ForegroundColor Green
+        Write-Host ""
+        Write-Host "📋 Verification:" -ForegroundColor Yellow
+        Write-Host "1. Plugin source URL: https://atreemandork.github.io/index.yml" -ForegroundColor Cyan
+        Write-Host "2. Plugin packages: https://atreemandork.github.io/plugins/" -ForegroundColor Cyan
+        Write-Host "3. Web interface: https://atreemandork.github.io/" -ForegroundColor Cyan
+        Write-Host ""
+        Write-Host "🔧 Usage in Stash:" -ForegroundColor Yellow
+        Write-Host "Add source URL in Stash Plugin Manager: https://atreemandork.github.io/index.yml" -ForegroundColor Cyan
